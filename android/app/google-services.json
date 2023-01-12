@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "732738074097",
+    "project_id": "goshops-7c405",
+    "storage_bucket": "goshops-7c405.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732738074097:android:5d848466fa9ca1736fc050",
+        "android_client_info": {
+          "package_name": "org.goshops"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732738074097-ebckifkgvhmvtde91gv51osuuttpinbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.goshops",
+            "certificate_hash": "3fd1e3274c4e9d19f0ec40b401bc730a8a56ea34"
+          }
+        },
+        {
+          "client_id": "732738074097-lqjiclv7rqa214frbko4rlk82062g9ut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.goshops",
+            "certificate_hash": "53f1da9ad75e6f774cccb6e61572206949618444"
+          }
+        },
+        {
+          "client_id": "732738074097-9cudh5cvvurrvh1ofkq27teu52s8q1q0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEMY0--tYjObK-nqLVobXTuml01avAass"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732738074097-9cudh5cvvurrvh1ofkq27teu52s8q1q0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "732738074097-4f1op36ibs6481rc03321q89f5dp3krh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.goshops"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

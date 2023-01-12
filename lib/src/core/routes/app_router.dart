@@ -1,0 +1,281 @@
+import 'package:auto_route/auto_route.dart';
+
+import '../../presentation/pages/pages.dart';
+
+@MaterialAutoRouter(
+  replaceInRouteName: 'Page,Route',
+  routes: [
+    CustomRoute(
+      path: '/',
+      page: SplashPage,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    AutoRoute(
+      path: '/no-connection',
+      page: NoConnectionPage,
+    ),
+    CustomRoute(
+      path: '/login',
+      page: LoginPage,
+      transitionsBuilder: TransitionsBuilders.slideTop,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/select-language',
+      page: SelectLanguagePage,
+      transitionsBuilder: TransitionsBuilders.slideTop,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/enter-phone',
+      page: EnterPhonePage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/reset',
+      page: ResetPasswordPage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/reset-confirmation',
+      page: ResetConfirmationPage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/new-password',
+      page: NewPasswordPage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/register-confirmation',
+      page: RegisterConfirmationPage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/register',
+      page: RegisterPage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      path: '/main',
+      page: MainPage,
+      transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+      durationInMilliseconds: 500,
+      children: [
+        CustomRoute(
+          path: 'shop-list',
+          page: ShopListPage,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+          durationInMilliseconds: 300,
+        ),
+        CustomRoute(
+          path: 'view-map',
+          page: ViewMapPage,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+          durationInMilliseconds: 300,
+        ),
+        CustomRoute(
+          path: 'search',
+          page: SearchPage,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+          durationInMilliseconds: 300,
+        ),
+      ],
+    ),
+    CustomRoute(
+      path: '/shop',
+      page: ShopMainPage,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      durationInMilliseconds: 500,
+      children: [
+        CustomRoute(
+          path: 'details',
+          page: ShopDetailsPage,
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 300,
+        ),
+        CustomRoute(
+          path: 'categories',
+          page: CategoriesPage,
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 300,
+        ),
+        CustomRoute(
+          path: 'liked',
+          page: LikedPage,
+          transitionsBuilder: TransitionsBuilders.slideLeft,
+          durationInMilliseconds: 300,
+        ),
+      ],
+    ),
+    CustomRoute(
+      path: '/product',
+      page: ProductPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/brand-details',
+      page: BrandDetailsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/brands',
+      page: BrandsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/notifications',
+      page: NotificationsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/add-address',
+      page: AddAddressPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/saved-stores',
+      page: SavedStoresPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/viewed-products',
+      page: ViewedProductsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/saved-locations',
+      page: SavedLocationsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/order',
+      page: OrderPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/checkout',
+      page: CheckoutPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/order-history',
+      page: OrderHistoryPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/category-products',
+      page: CategoryProductsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/profile-settings',
+      page: ProfileSettingsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/order-details',
+      page: OrderDetailsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/system-settings',
+      page: SystemSettingsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/become-seller',
+      page: BecomeSellerPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/blog',
+      page: BlogPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/blog-details',
+      page: BlogDetailsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/new-products',
+      page: NewProductsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/banner-details',
+      page: BannerDetailsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/most-sold',
+      page: MostSoldProductsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/discount',
+      page: DiscountProductsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/wallet-history',
+      page: WalletHistoriesPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/chat',
+      page: ChatPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/often-buy',
+      page: OftenBuyProductsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/profitable',
+      page: ProfitableProductsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/looks',
+      page: LooksPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+  ],
+)
+class $AppRouter {}

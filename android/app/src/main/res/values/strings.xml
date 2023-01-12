@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Goshops</string>
+    <string name="facebook_app_id">761424318457354</string>
+    <string name="fb_login_protocol_scheme">fb761424318457354</string>
+    <string name="facebook_client_token">cc99281caec73d1511ce8bbba78ee633</string>
+</resources>
