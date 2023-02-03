@@ -49,7 +49,7 @@ class _ProfitableProductsPageState
             isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
         appBar: CommonAppBar(
           onLeadingPressed: context.popRoute,
-          title: AppHelpers.getTranslation(TrKeys.profitable),
+          title: AppHelpers.getTranslation(TrKeys.discountText),
         ),
         body: Column(
           children: [
@@ -177,7 +177,7 @@ class _ProfitableProductsPageState
                                     ),
                                     14.verticalSpace,
                                     Text(
-                                      '${AppHelpers.getTranslation(TrKeys.thereAreNoItemsInThe)} ${AppHelpers.getTranslation(TrKeys.profitable).toLowerCase()}',
+                                      '${AppHelpers.getTranslation(TrKeys.thereAreNoItemsInThe)} ${AppHelpers.getTranslation(TrKeys.newProductsText).toLowerCase()}',
                                       style: GoogleFonts.k2d(
                                         fontSize: 14.sp,
                                         fontWeight: FontWeight.w600,

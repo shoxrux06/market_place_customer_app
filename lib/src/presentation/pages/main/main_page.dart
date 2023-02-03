@@ -57,8 +57,8 @@ class _MainPageState extends ConsumerState<MainPage>
           extendBody: true,
           appBarBuilder: (context, tabsRouter) {
             return AppBar(
-              backgroundColor:
-                  isDarkMode ? AppColors.mainBackDark : AppColors.white,
+              // backgroundColor:
+              //     isDarkMode ? AppColors.mainBackDark : AppColors.white,
               elevation: 0,
               leadingWidth: 0,
               leading: const SizedBox(),
@@ -79,7 +79,7 @@ class _MainPageState extends ConsumerState<MainPage>
                       context.pushRoute(const NotificationsRoute()),
                   icon: Icon(
                     FlutterRemix.notification_line,
-                    color: isDarkMode ? AppColors.white : AppColors.black,
+                      color: isDarkMode ? AppColors.white : AppColors.black,
                     size: 22.r,
                   ),
                 ),

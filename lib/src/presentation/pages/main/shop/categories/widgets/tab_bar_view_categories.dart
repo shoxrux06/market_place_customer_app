@@ -78,12 +78,9 @@ class _TabBarViewCategoriesState extends State<TabBarViewCategories>
           child: TabBarView(
             physics: const CustomBouncingScrollPhysics(),
             controller: _tabController,
-            children: widget.categories
-                .map(
-                  (category) =>
+            children: widget.categories.map((category) =>
                       CategoryTabBody(categories: category.children ?? []),
-                )
-                .toList(),
+                ).toList(),
           ),
         ),
       ],

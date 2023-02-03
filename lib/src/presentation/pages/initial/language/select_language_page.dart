@@ -31,9 +31,7 @@ class _SelectLanguagePageState extends ConsumerState<SelectLanguagePage> {
     Future.delayed(
       Duration.zero,
       () {
-        ref
-            .read(selectLangProvider.notifier)
-            .getLanguages(context, widget.isRequired);
+        ref.read(selectLangProvider.notifier).getLanguages(context, widget.isRequired);
       },
     );
   }

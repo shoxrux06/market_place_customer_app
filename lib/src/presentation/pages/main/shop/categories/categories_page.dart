@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_customer/src/presentation/pages/main/shop/categories/widgets/category_item.dart';
+import 'package:g_customer/src/presentation/pages/main/shop/categories/widgets/category_sub_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../core/constants/constants.dart';
@@ -77,7 +79,7 @@ class _CategoriesPageState extends ConsumerState<CategoriesPage> {
                           color: isDarkMode ? AppColors.white : AppColors.black,
                         )
                       : state.categories.isNotEmpty
-                          ? TabBarViewCategories(categories: state.categories)
+                          ? CategoryItem(categories: state.categories)
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

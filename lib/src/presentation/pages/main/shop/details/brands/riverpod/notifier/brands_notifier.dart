@@ -35,6 +35,7 @@ class BrandsNotifier extends StateNotifier<BrandsState> {
             if ((data.data?.length ?? 0) < 18) {
               _hasMore = false;
             }
+            print('==> Brands ---> ${data.data}');
           },
           failure: (failure) {
             state = state.copyWith(isLoading: false);

@@ -20,6 +20,7 @@ class ShopData {
     String? backgroundImg,
     String? logoImg,
     num? minAmount,
+    String? mark,
     String? status,
     String? statusNote,
     String? ratingAvg,
@@ -46,6 +47,7 @@ class ShopData {
     _backgroundImg = backgroundImg;
     _logoImg = logoImg;
     _minAmount = minAmount;
+    _mark = mark;
     _status = status;
     _statusNote = statusNote;
     _ratingAvg = ratingAvg;
@@ -75,6 +77,7 @@ class ShopData {
     _backgroundImg = json['background_img'];
     _logoImg = json['logo_img'];
     _minAmount = json['min_amount'];
+    _mark = json['mark'];
     _status = json['status'];
     _statusNote = json['status_note'];
     _ratingAvg = json['rating_avg'];
@@ -109,6 +112,7 @@ class ShopData {
   String? _backgroundImg;
   String? _logoImg;
   num? _minAmount;
+  String? _mark;
   String? _status;
   String? _statusNote;
   String? _ratingAvg;
@@ -136,6 +140,7 @@ class ShopData {
     String? backgroundImg,
     String? logoImg,
     num? minAmount,
+    String? mark,
     String? status,
     String? statusNote,
     String? ratingAvg,
@@ -163,6 +168,7 @@ class ShopData {
         backgroundImg: backgroundImg ?? _backgroundImg,
         logoImg: logoImg ?? _logoImg,
         minAmount: minAmount ?? _minAmount,
+        mark: mark?? _mark,
         status: status ?? _status,
         statusNote: statusNote ?? _statusNote,
         ratingAvg: ratingAvg ?? _ratingAvg,
@@ -206,6 +212,8 @@ class ShopData {
 
   num? get minAmount => _minAmount;
 
+  String? get mark => _mark;
+
   String? get status => _status;
 
   String? get statusNote => _statusNote;
@@ -223,6 +231,12 @@ class ShopData {
   Seller? get seller => _seller;
 
   List<ShopDelivery>? get deliveries => _deliveries;
+
+
+  @override
+  String toString() {
+    return 'ShopData{_id: $_id, _uuid: $_uuid, _userId: $_userId, _tax: $_tax, _deliveryRange: $_deliveryRange, _percentage: $_percentage, _location: $_location, _phone: $_phone, _showType: $_showType, _open: $_open, _visibility: $_visibility, _openTime: $_openTime, _closeTime: $_closeTime, _backgroundImg: $_backgroundImg, _logoImg: $_logoImg, _minAmount: $_minAmount, _mark: $_mark, _status: $_status, _statusNote: $_statusNote, _ratingAvg: $_ratingAvg, _createdAt: $_createdAt, _updatedAt: $_updatedAt, _deletedAt: $_deletedAt, _translation: $_translation, _seller: $_seller, _deliveries: $_deliveries}';
+  }
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -244,6 +258,7 @@ class ShopData {
     map['background_img'] = _backgroundImg;
     map['logo_img'] = _logoImg;
     map['min_amount'] = _minAmount;
+    map['mark'] = _mark;
     map['status'] = _status;
     map['status_note'] = _statusNote;
     map['rating_avg'] = _ratingAvg;
@@ -262,6 +277,8 @@ class ShopData {
     return map;
   }
 }
+
+
 
 class Seller {
   Seller({
@@ -316,5 +333,10 @@ class Seller {
     map['lastname'] = _lastname;
     map['role'] = _role;
     return map;
+  }
+
+  @override
+  String toString() {
+    return 'Seller{_id: $_id, _firstname: $_firstname, _lastname: $_lastname, _role: $_role}';
   }
 }

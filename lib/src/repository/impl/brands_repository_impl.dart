@@ -51,6 +51,8 @@ class BrandsRepositoryImpl extends BrandsRepository {
         '/api/v1/rest/brands/paginate',
         queryParameters: data,
       );
+      print('Brands List *****${response}*****');
+      print('Brands List Length *****${response}*****');
       return ApiResult.success(
         data: BrandsPaginateResponse.fromJson(response.data),
       );

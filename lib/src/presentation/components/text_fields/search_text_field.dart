@@ -26,48 +26,60 @@ class SearchTextField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(appProvider);
-    return TextFormField(
-      autofocus: false,
-      style: GoogleFonts.k2d(
-        fontWeight: FontWeight.w500,
-        fontSize: 13.sp,
-        color: state.isDarkMode ? AppColors.white : AppColors.black,
+    return Container(
+      decoration:const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 2),
+            color: Colors.black12,
+            spreadRadius: 1,
+            blurRadius: 2
+          ),
+        ]
       ),
-      onChanged: onChanged,
-      controller: textEditingController,
-      cursorColor: state.isDarkMode ? AppColors.white : AppColors.black,
-      cursorWidth: 1,
-      decoration: InputDecoration(
-        hintStyle: GoogleFonts.k2d(
+      child: TextFormField(
+        autofocus: false,
+        style: GoogleFonts.k2d(
           fontWeight: FontWeight.w500,
           fontSize: 13.sp,
-          color: state.isDarkMode
-              ? AppColors.white.withOpacity(0.5)
-              : AppColors.hintColor,
-        ),
-        hintText: hintText ?? AppHelpers.getTranslation(TrKeys.searchProducts),
-        contentPadding: REdgeInsets.symmetric(horizontal: 15, vertical: 17),
-        prefixIcon: Icon(
-          FlutterRemix.search_2_line,
-          size: 20.r,
           color: state.isDarkMode ? AppColors.white : AppColors.black,
         ),
-        suffixIcon: suffixIcon,
-        fillColor: state.isDarkMode ? AppColors.mainBackDark : AppColors.white,
-        filled: true,
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: state.isDarkMode ? AppColors.mainBackDark : AppColors.white,
+        onChanged: onChanged,
+        controller: textEditingController,
+        cursorColor: state.isDarkMode ? AppColors.white : AppColors.black,
+        cursorWidth: 1,
+        decoration: InputDecoration(
+          hintStyle: GoogleFonts.k2d(
+            fontWeight: FontWeight.w500,
+            fontSize: 13.sp,
+            color: state.isDarkMode
+                ? AppColors.white.withOpacity(0.5)
+                : AppColors.hintColor,
           ),
-        ),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: state.isDarkMode ? AppColors.mainBackDark : AppColors.white,
+          hintText: hintText ?? AppHelpers.getTranslation(TrKeys.searchProducts),
+          contentPadding: REdgeInsets.symmetric(horizontal: 15, vertical: 12),
+          prefixIcon: Icon(
+            FlutterRemix.search_2_line,
+            size: 20.r,
+            color: state.isDarkMode ? AppColors.white : AppColors.black,
           ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: state.isDarkMode ? AppColors.mainBackDark : AppColors.white,
+          suffixIcon: suffixIcon,
+          fillColor: state.isDarkMode ? AppColors.mainBackDark : AppColors.white,
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: state.isDarkMode ? AppColors.mainBackDark : AppColors.searchTextFormFieldColor,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: state.isDarkMode ? AppColors.mainBackDark : AppColors.searchTextFormFieldColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: state.isDarkMode ? AppColors.mainBackDark : AppColors.searchTextFormFieldColor,
+            ),
           ),
         ),
       ),

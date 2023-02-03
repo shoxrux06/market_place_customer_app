@@ -37,6 +37,8 @@ class ShopDetailsNotifier extends StateNotifier<ShopDetailsState> {
             isBrandsLoading: false,
             brands: data.data ?? [],
           );
+          print('Brands List *****${data.data?.toList()}*****');
+          print('Brands List Length *****${data.data?.toList().length}*****');
         },
         failure: (activeFailure) {
           state = state.copyWith(isBrandsLoading: false);

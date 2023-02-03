@@ -381,10 +381,33 @@ class AppHelpers {
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height - paddingTop.r,
       ),
-      backgroundColor:
-          isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
+      backgroundColor: isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
       context: context,
       builder: (context) => modal,
     );
+  }
+
+  static void showCustomModalBottomSheetVideo({
+    required BuildContext context,
+    required Widget modal,
+    required bool isDarkMode,
+    int paddingTop = 48,
+  }) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8.r),
+          topRight: Radius.circular(8.r),
+        ),
+      ),
+      isScrollControlled: true,
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height - paddingTop.r,
+      ),
+      backgroundColor:
+      isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
+      context: context,
+      builder: (context) => modal,
+    ).whenComplete(() => print('Dialog is cloased'));
   }
 }

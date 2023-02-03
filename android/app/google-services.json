@@ -1,56 +1,48 @@
 {
   "project_info": {
-    "project_number": "732738074097",
-    "project_id": "goshops-7c405",
-    "storage_bucket": "goshops-7c405.appspot.com"
+    "project_number": "181246820698",
+    "project_id": "safin24",
+    "storage_bucket": "safin24.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:732738074097:android:5d848466fa9ca1736fc050",
+        "mobilesdk_app_id": "1:181246820698:android:cc02ab25bedfc98efa3363",
         "android_client_info": {
-          "package_name": "org.goshops"
+          "package_name": "com.proconnect.safin24"
         }
       },
       "oauth_client": [
         {
-          "client_id": "732738074097-ebckifkgvhmvtde91gv51osuuttpinbo.apps.googleusercontent.com",
+          "client_id": "181246820698-37f5b2ioplgqbou2ae4oreri8j6fugj8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "org.goshops",
-            "certificate_hash": "3fd1e3274c4e9d19f0ec40b401bc730a8a56ea34"
+            "package_name": "com.proconnect.safin24",
+            "certificate_hash": "6b2f1c4bfc2af3083ea65c05ba7634c6040d13e4"
           }
         },
         {
-          "client_id": "732738074097-lqjiclv7rqa214frbko4rlk82062g9ut.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "org.goshops",
-            "certificate_hash": "53f1da9ad75e6f774cccb6e61572206949618444"
-          }
-        },
-        {
-          "client_id": "732738074097-9cudh5cvvurrvh1ofkq27teu52s8q1q0.apps.googleusercontent.com",
+          "client_id": "181246820698-4fble2dpanik6am3efjvktip6u8s4d39.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBEMY0--tYjObK-nqLVobXTuml01avAass"
+          "current_key": "AIzaSyDmThdksEON9ltGAqWbuJ-iz0YWP2UWHQM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "732738074097-9cudh5cvvurrvh1ofkq27teu52s8q1q0.apps.googleusercontent.com",
+              "client_id": "181246820698-4fble2dpanik6am3efjvktip6u8s4d39.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "732738074097-4f1op36ibs6481rc03321q89f5dp3krh.apps.googleusercontent.com",
+              "client_id": "181246820698-r9tvd5s7tvkej4bf8iiukvietcpkjl3q.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "org.goshops"
+                "bundle_id": "com.proconnect.safin24"
               }
             }
           ]

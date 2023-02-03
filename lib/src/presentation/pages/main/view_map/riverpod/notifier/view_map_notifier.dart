@@ -21,6 +21,7 @@ class ViewMapNotifier extends StateNotifier<ViewMapState> {
     if (connected) {
       state = state.copyWith(isLoading: true);
       final response = await _shopsRepository.getAllShops();
+      print('Response shops${response}');
       response.when(
         success: (data) async {
           state = state.copyWith(

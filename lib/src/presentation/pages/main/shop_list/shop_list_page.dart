@@ -65,27 +65,27 @@ class _ShopListPageState extends ConsumerState<ShopListPage>
             children: [
               const ShopListBanners(),
               1.verticalSpace,
-              Row(
-                children: [
-                  Expanded(
-                    child: OftenBuyButton(
-                      icAsset: AppAssets.svgIcOftenBuy,
-                      onTap: () =>
-                          context.pushRoute(const OftenBuyProductsRoute()),
-                      title: AppHelpers.getTranslation(TrKeys.oftenBuy),
-                    ),
-                  ),
-                  1.horizontalSpace,
-                  Expanded(
-                    child: OftenBuyButton(
-                      icAsset: AppAssets.svgIcProfitable,
-                      onTap: () =>
-                          context.pushRoute(const ProfitableProductsRoute()),
-                      title: AppHelpers.getTranslation(TrKeys.profitable),
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: OftenBuyButton(
+              //         icAsset: AppAssets.svgIcOftenBuy,
+              //         onTap: () =>
+              //             context.pushRoute(const OftenBuyProductsRoute()),
+              //         title: AppHelpers.getTranslation(TrKeys.oftenBuy),
+              //       ),
+              //     ),
+              //     1.horizontalSpace,
+              //     Expanded(
+              //       child: OftenBuyButton(
+              //         icAsset: AppAssets.svgIcProfitable,
+              //         onTap: () =>
+              //             context.pushRoute(const ProfitableProductsRoute()),
+              //         title: AppHelpers.getTranslation(TrKeys.profitable),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               15.verticalSpace,
               ListView.builder(
                 itemCount: state.categories.length,

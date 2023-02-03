@@ -16,6 +16,9 @@ import '../../../../riverpod/provider/app_provider.dart';
 import '../../../components/components.dart';
 import '../../../theme/theme.dart';
 import '../profile/profile_modal.dart';
+import '../riverpod/provider/main_provider.dart';
+import '../widgets/main_search_filter_modal.dart';
+import 'details/brands/widgets/horizantal_brand.dart';
 import 'liked/riverpod/provider/liked_provider.dart';
 
 class ShopMainPage extends ConsumerWidget {
@@ -25,9 +28,12 @@ class ShopMainPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isDarkMode = ref.watch(appProvider).isDarkMode;
     final bool isLtr = ref.watch(appProvider).isLtr;
+    final notifier = ref.read(mainProvider.notifier);
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: KeyboardDismisser(
+          child: DefaultTabController(
+        length: 4,
         child: AutoTabsScaffold(
           backgroundColor:
               isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
@@ -42,13 +48,28 @@ class ShopMainPage extends ConsumerWidget {
                     leadingWidth: 0.r,
                     leading: const SizedBox(),
                     centerTitle: false,
-                    title: Text(
-                      '${AppHelpers.getAppName()}',
-                      style: GoogleFonts.k2d(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w500,
-                        color: isDarkMode ? AppColors.white : AppColors.black,
-                        letterSpacing: -0.7,
+                    title: SizedBox(
+                      height: 44.r,
+                      child: SearchTextField(
+                        onChanged: (value) =>
+                            notifier.setQuery(context, value, tabsRouter),
+                        // suffixIcon: IconButton(
+                        //   splashRadius: 10,
+                        //   icon: Icon(
+                        //     FlutterRemix.equalizer_line,
+                        //     color: isDarkMode ? AppColors.white : AppColors.black,
+                        //     size: 18.r,
+                        //   ),
+                        //   onPressed: () {
+                        //     notifier.fetchCategories(context);
+                        //     notifier.fetchBrands(context);
+                        //     AppHelpers.showCustomModalBottomSheet(
+                        //       context: context,
+                        //       modal: const MainSearchFilterModal(),
+                        //       isDarkMode: isDarkMode,
+                        //     );
+                        //   },
+                        // ),
                       ),
                     ),
                     actions: [
@@ -63,6 +84,13 @@ class ShopMainPage extends ConsumerWidget {
                         ),
                       ),
                     ],
+                    bottom: PreferredSize(
+                      preferredSize: Size.fromHeight(64),
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 8, top: 8),
+                        child: HorizantalBrands()
+                      )
+                    )
                   )
                 : tabsRouter.activeIndex == 1
                     ? AppBar(
@@ -259,7 +287,7 @@ class ShopMainPage extends ConsumerWidget {
             );
           },
         ),
-      ),
+      )),
     );
   }
 

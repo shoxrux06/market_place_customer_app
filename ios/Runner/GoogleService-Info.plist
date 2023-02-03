@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>732738074097-4f1op36ibs6481rc03321q89f5dp3krh.apps.googleusercontent.com</string>
+	<string>181246820698-r9tvd5s7tvkej4bf8iiukvietcpkjl3q.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.732738074097-4f1op36ibs6481rc03321q89f5dp3krh</string>
+	<string>com.googleusercontent.apps.181246820698-r9tvd5s7tvkej4bf8iiukvietcpkjl3q</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>181246820698-1uq3a57fc3pli55goq5cup20idufs2on.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDudBWMn5armfoFLKwpgAjpM7LOyPEu5XU</string>
+	<string>AIzaSyAWfnCrLOak1Y7FebMt6W7Z_anf5sVrUTY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>732738074097</string>
+	<string>181246820698</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.goshops</string>
+	<string>com.proconnect.safin24</string>
 	<key>PROJECT_ID</key>
-	<string>goshops-7c405</string>
+	<string>safin24</string>
 	<key>STORAGE_BUCKET</key>
-	<string>goshops-7c405.appspot.com</string>
+	<string>safin24.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:732738074097:ios:abd1b461a405abdf6fc050</string>
+	<string>1:181246820698:ios:d83a8349a11f6577fa3363</string>
 </dict>
 </plist>

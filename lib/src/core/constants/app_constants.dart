@@ -36,11 +36,11 @@ class AppConstants {
   static const String emptyString = '';
 
   /// api urls
-  static const String baseUrl = 'https://api.goshops.org';
+  static const String baseUrl = 'https://api.safin24.uz';
   static const String imageBaseUrl = '$baseUrl/storage/images';
   static const String googleApiKey = 'AIzaSyBgNvtPqsuKcgp26ukVPobjKw0Igx2dp5M';
   static const String privacyPolicyUrl = '$baseUrl/privacy-policy';
-  static const String adminPageUrl = 'https://admin.goshops.org';
+  static const String adminPageUrl = 'https://api.safin24.uz';
 
   /// locales
   static const String localeCodeEn = 'en';

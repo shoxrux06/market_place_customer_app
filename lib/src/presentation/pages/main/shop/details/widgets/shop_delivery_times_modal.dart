@@ -80,8 +80,7 @@ class ShopDeliveryTimesModal extends ConsumerWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     intl.DateFormat('MM.dd')

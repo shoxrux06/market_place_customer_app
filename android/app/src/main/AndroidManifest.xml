@@ -1,18 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.goshops">
+    package="com.proconnect.safin24">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:label="Goshops Customer App"
+        android:label="Safin 24"
         android:name="${applicationName}"
+        android:usesCleartextTraffic="true"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher">
 
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyAIZAHqq0Gpw0yNcq6LgsQd9EAGpee5sMg"/>
+           android:value="AIzaSyAY66qXWSfwSfGPCFw3U3UWWx5uA-I_2U4"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

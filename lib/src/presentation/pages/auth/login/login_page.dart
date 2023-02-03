@@ -76,8 +76,7 @@ class LoginPage extends ConsumerWidget {
                           style: GoogleFonts.k2d(
                             fontWeight: FontWeight.w500,
                             fontSize: 18.sp,
-                            color:
-                                isDarkMode ? AppColors.white : AppColors.black,
+                            color: isDarkMode ? AppColors.white : AppColors.black,
                           ),
                         ),
                         26.verticalSpace,
@@ -92,8 +91,7 @@ class LoginPage extends ConsumerWidget {
                               ? AppHelpers.getTranslation(
                                   TrKeys.emailIsNotValid)
                               : (state.isLoginError
-                                  ? AppHelpers.getTranslation(
-                                      TrKeys.loginCredentialsAreNotValid)
+                                  ? AppHelpers.getTranslation(TrKeys.loginCredentialsAreNotValid)
                                   : null),
                         ),
                         16.verticalSpace,
@@ -142,8 +140,7 @@ class LoginPage extends ConsumerWidget {
                         AccentLoginButton(
                           title: AppHelpers.getTranslation(TrKeys.login),
                           isLoading: state.isLoading,
-                          onPressed: state.email.length > 2 &&
-                                  state.password.length > 7
+                          onPressed: state.email.length > 2 && state.password.length > 7
                               ? () => notifier.login(context)
                               : null,
                         ),

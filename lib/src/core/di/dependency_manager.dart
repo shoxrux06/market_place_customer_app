@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:google_place/google_place.dart';
 
+import '../../repository/impl/video_repository_impl.dart';
 import '../../repository/repository.dart';
+import '../../repository/video_repository.dart';
 import '../constants/constants.dart';
 import '../handlers/handlers.dart';
 
@@ -24,6 +26,7 @@ void setUpDependencies() {
   getIt.registerSingleton<OrdersRepository>(OrdersRepositoryImpl());
   getIt.registerSingleton<UserRepository>(UserRepositoryImpl());
   getIt.registerSingleton<BlogsRepository>(BlogsRepositoryImpl());
+  getIt.registerSingleton<VideoRepository>(VideoRepositoryImpl());
 }
 
 final settingsRepository = getIt.get<SettingsRepository>();
@@ -41,3 +44,4 @@ final paymentsRepository = getIt.get<PaymentsRepository>();
 final ordersRepository = getIt.get<OrdersRepository>();
 final userRepository = getIt.get<UserRepository>();
 final blogsRepository = getIt.get<BlogsRepository>();
+final videoRepository = getIt.get<VideoRepository>();

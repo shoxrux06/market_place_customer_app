@@ -13,6 +13,7 @@ import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../components/components.dart';
 import '../../../theme/theme.dart';
+import 'add_video/widgets/source_button.dart';
 import 'chat/riverpod/provider/chat_provider.dart';
 import 'riverpod/provider/address_modal_provider.dart';
 import 'widgets/address_button.dart';
@@ -63,33 +64,42 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                   : AppColors.dragElement,
             ),
           ),
+          // Align(
+          //   alignment: AlignmentDirectional.centerEnd,
+          //   child: Container(
+          //     width: 20.r,
+          //     height: 20.r,
+          //     margin: EdgeInsetsDirectional.only(end: 15.r),
+          //     child: IconButton(
+          //       padding: EdgeInsets.zero,
+          //       splashRadius: 20.r,
+          //       onPressed: context.popRoute,
+          //       icon: Icon(
+          //         FlutterRemix.close_circle_fill,
+          //         size: 20.r,
+          //         color: isDarkMode
+          //             ? AppColors.white
+          //             : AppColors.black.withOpacity(0.3),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: Container(
-              width: 20.r,
-              height: 20.r,
-              margin: EdgeInsetsDirectional.only(end: 15.r),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                splashRadius: 20.r,
-                onPressed: context.popRoute,
-                icon: Icon(
-                  FlutterRemix.close_circle_fill,
-                  size: 20.r,
-                  color: isDarkMode
-                      ? AppColors.white
-                      : AppColors.black.withOpacity(0.3),
-                ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(start: 15.r),
+              child:  Row(
+                children: [
+                  AddressButton(),
+                  const Spacer(),
+                  SourceButton(),
+                  SizedBox(width: 16,),
+                ],
               ),
             ),
           ),
-          Align(
-            alignment: AlignmentDirectional.centerStart,
-            child: Padding(
-              padding: EdgeInsetsDirectional.only(start: 15.r),
-              child: const AddressButton(),
-            ),
-          ),
+
           15.verticalSpace,
           Divider(
             thickness: 1.r,
@@ -229,7 +239,7 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8.r),
                           onTap: () => context.router
-                              .popAndPush(const SystemSettingsRoute()),
+                              .push(const SystemSettingsRoute()),
                           child: Container(
                             width: 50.r,
                             height: 50.r,
@@ -268,47 +278,47 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                               return;
                             }
                             context.router
-                                .popAndPush(const ProfileSettingsRoute());
+                                .push(const ProfileSettingsRoute());
                           },
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.bookmark_3_line,
                           title: AppHelpers.getTranslation(TrKeys.savedStores),
                           onTap: () => context.router
-                              .popAndPush(const SavedStoresRoute()),
+                              .push(const SavedStoresRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.percent_line,
                           title: AppHelpers.getTranslation(TrKeys.discount),
                           onTap: () => context.router
-                              .popAndPush(const DiscountProductsRoute()),
+                              .push(const DiscountProductsRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.eye_line,
                           title:
                               AppHelpers.getTranslation(TrKeys.viewedProducts),
                           onTap: () => context.router
-                              .popAndPush(const ViewedProductsRoute()),
+                              .push(const ViewedProductsRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.bank_card_line,
                           title:
                               AppHelpers.getTranslation(TrKeys.walletHistory),
                           onTap: () => context.router
-                              .popAndPush(const WalletHistoriesRoute()),
+                              .push(const WalletHistoriesRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.shirt_line,
                           title: AppHelpers.getTranslation(TrKeys.blogs),
                           onTap: () =>
-                              context.router.popAndPush(const BlogRoute()),
+                              context.router.push(const BlogRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.map_pin_2_line,
                           title:
                               AppHelpers.getTranslation(TrKeys.savedLocations),
                           onTap: () => context.router
-                              .popAndPush(const SavedLocationsRoute()),
+                              .push(const SavedLocationsRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.file_list_2_line,
@@ -325,7 +335,7 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                               return;
                             }
                             context.router
-                                .popAndPush(const OrderHistoryRoute());
+                                .push(const OrderHistoryRoute());
                           },
                         ),
                         ProfileMenuButton(
@@ -385,7 +395,7 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                           iconData: FlutterRemix.store_2_line,
                           title: AppHelpers.getTranslation(TrKeys.becomeSeller),
                           onTap: () => context.router
-                              .popAndPush(const BecomeSellerRoute()),
+                              .push(const BecomeSellerRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.logout_circle_r_line,

@@ -114,6 +114,7 @@ class MainCategoryItem extends ConsumerWidget {
             },
           ),
           27.verticalSpace,
+
         ],
       ),
     );

@@ -48,7 +48,7 @@ class _OftenBuyProductsPageState extends ConsumerState<OftenBuyProductsPage> {
             isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
         appBar: CommonAppBar(
           onLeadingPressed: () => context.popRoute(),
-          title: AppHelpers.getTranslation(TrKeys.oftenBuy),
+          title: AppHelpers.getTranslation(TrKeys.famousText),
         ),
         body: Column(
           children: [

@@ -54,6 +54,7 @@ class AppColors {
   static const Color shippingType = Color(0xFF95999D);
   static const Color attachmentBorder = Color(0xFFDCDCDC);
   static const Color orderStatusProgressBack = Color(0xFFE7E7E7);
+  static const Color searchTextFormFieldColor = Color(0xFFEFF1F5);
 
   /// dark theme based colors
   static const Color mainBackDark = Color(0xFF1E272E);

@@ -24,17 +24,20 @@ class OftenBuyButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r)
+          ),
           alignment: Alignment.center,
-          height: 44.r,
+          height: 32.r,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                icAsset,
-                width: 20.r,
-                height: 20.r,
-              ),
-              10.horizontalSpace,
+              // SvgPicture.asset(
+              //   icAsset,
+              //   width: 20.r,
+              //   height: 20.r,
+              // ),
+              // 10.horizontalSpace,
               Text(
                 title,
                 style: GoogleFonts.k2d(
