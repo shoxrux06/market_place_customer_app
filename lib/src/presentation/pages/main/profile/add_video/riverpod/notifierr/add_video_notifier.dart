@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:g_customer/src/models/response/video_list_response.dart';
 import 'package:g_customer/src/presentation/pages/main/profile/add_video/riverpod/state/add_video_state.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:video_compress/video_compress.dart';
 
 import '../../../../../../../core/utils/app_connectivity.dart';
-import '../../../../../../../core/utils/app_helpers.dart';
 import '../../../../../../../repository/video_repository.dart';
 
 class AddVideoNotifier extends StateNotifier<AddVideoState> {
@@ -21,21 +21,21 @@ class AddVideoNotifier extends StateNotifier<AddVideoState> {
           ),
         );
 
-  Future<void> getVideoList() async {
+  Future<dynamic> getVideoList() async {
     final connected = await AppConnectivity.connectivity();
     if(connected){
       final response = await _videoRepository.getVideoList();
-
       response.when(success: (data){
         print('Video in Notifier success ::::${data.data}:::');
         state.copyWith(
           videoList: data.data,
         );
+        return data.data;
       }, failure: (failure){
         print('Video in Notifier error ::::$failure:::');
       });
     }
-
+    return <Video>[];
   }
 
   Future<void> createVideo({
@@ -45,6 +45,8 @@ class AddVideoNotifier extends StateNotifier<AddVideoState> {
   }) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
+      state.copyWith(isUploadingVideo:true);
+      state.isUploadingVideo;
       final response = await _videoRepository.createVideo(
         userId: userId,
         name: name,
@@ -52,8 +54,10 @@ class AddVideoNotifier extends StateNotifier<AddVideoState> {
       );
 
       response.when(success: (data) {
-        state.copyWith();
-      }, failure: (failure) {});
+        state.copyWith(isUploadingVideo:false);
+      }, failure: (failure) {
+        state.copyWith(isUploadingVideo:false);
+      });
     }
     state.copyWith();
   }

@@ -56,8 +56,10 @@ class _CategoryItemState extends State<CategoryItem>
                   isExpanded = expanded;
                 });
               },
-              trailing: Icon(isExpanded? Icons.keyboard_arrow_down_rounded:Icons.keyboard_arrow_up_rounded,size: 48,),
-              children: widget.categories.map((cat) => CategorySubItem(categories: cat.children??[],)).toList()
+              trailing: Icon(!isExpanded? Icons.keyboard_arrow_down_rounded:Icons.keyboard_arrow_up_rounded,size: 32,),
+              children: [
+                 CategorySubItem(categories: category.children??[],)
+              ]
             ),
           )
           .toList(),

@@ -23,10 +23,6 @@ class CategorySubItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: categories.map((category) {
-              int? index;
-              category.children?.map((e) {
-                index = e.children?.indexOf(e);
-              });
               return Material(
                 color: isDarkMode ? AppColors.mainBackDark : AppColors.white,
                 borderRadius: BorderRadius.circular(10.r),
@@ -39,17 +35,20 @@ class CategorySubItem extends StatelessWidget {
                     ),
                   ),
                   child: Container(
-                    height: 48,
-                    width: 1.sw,
-                    child: Text(
-                      '${category.translation?.title}',
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.k2d(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12.sp,
-                        color: isDarkMode ? AppColors.white : AppColors.black,
-                        letterSpacing: -0.4,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                    margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        '${category.translation?.title}',
+                        maxLines: 2,
+                        textAlign: TextAlign.start,
+                        style: GoogleFonts.k2d(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.sp,
+                          color: isDarkMode ? AppColors.white : AppColors.black,
+                          letterSpacing: -0.4,
+                        ),
                       ),
                     ),
                   )

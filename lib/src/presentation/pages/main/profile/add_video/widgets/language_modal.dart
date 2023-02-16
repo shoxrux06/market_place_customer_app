@@ -39,25 +39,6 @@ class _LanguageModalState extends ConsumerState<LanguageModal> {
         isDarkMode: false,
       );
     }
-
-    final mediaInfo = await VideoCompress.compressVideo(
-      inFile.path ?? '',
-      quality: VideoQuality.Res640x480Quality,
-      deleteOrigin: false, // It's false by default
-    );
-
-
-    int sizeIntBytes = inFile.lengthSync() ?? 0;
-    double sizeInMB = sizeIntBytes / (1024 * 1024);
-    if (kDebugMode) {
-      print('$sizeInMB Mb');
-    }
-
-    int sizeIntBytes2 = mediaInfo?.file?.lengthSync() ?? 0;
-    double sizeInMB2 = sizeIntBytes2 / (1024 * 1024);
-    if (kDebugMode) {
-      print('Compressed --> $sizeInMB2 Mb');
-    }
   }
 
   getFromCamera() async {

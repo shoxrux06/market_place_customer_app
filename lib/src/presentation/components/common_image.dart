@@ -29,7 +29,7 @@ class CommonImage extends StatelessWidget {
         imageUrl: '${AppConstants.imageBaseUrl}/$imageUrl',
         width: width,
         height: height,
-        fit: BoxFit.cover,
+        fit: BoxFit.fill,
         progressIndicatorBuilder: (context, url, progress) {
           return MakeShimmer(
             child: Container(

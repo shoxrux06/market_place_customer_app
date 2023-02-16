@@ -37,8 +37,7 @@ class ShopListBanners extends ConsumerWidget {
               autoPlay: true,
               onPageChanged: (index, reason) => notifier.setActiveBanner(index),
             ),
-            itemBuilder:
-                (BuildContext context, int index, int realIndex) {
+            itemBuilder: (BuildContext context, int index, int realIndex) {
               final banner = state.banners[index];
               return InkWell(
                 onTap: ()=>context.pushRoute(BannerDetailsRoute(id: banner.id, imageUrl: banner.img)),

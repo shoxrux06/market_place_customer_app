@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../theme/theme.dart';
 
-class AccentLoginButton extends StatelessWidget {
+class AccentLoginButton extends StatefulWidget {
   final String title;
   final bool isLoading;
   final Function()? onPressed;
@@ -21,6 +21,11 @@ class AccentLoginButton extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<AccentLoginButton> createState() => _AccentLoginButtonState();
+}
+
+class _AccentLoginButtonState extends State<AccentLoginButton> {
+  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -30,10 +35,10 @@ class AccentLoginButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.r),
         ),
         minimumSize: Size.fromHeight(46.r),
-        backgroundColor: background,
+        backgroundColor: widget.background,
       ),
-      onPressed: onPressed,
-      child: isLoading
+      onPressed: widget.onPressed,
+      child: widget.isLoading
           ? SizedBox(
               width: 20.r,
               height: 20.r,
@@ -43,11 +48,11 @@ class AccentLoginButton extends StatelessWidget {
               ),
             )
           : Text(
-              title,
+              widget.title,
               style: GoogleFonts.k2d(
                 fontWeight: FontWeight.w500,
                 fontSize: 15.sp,
-                color: textColor,
+                color: widget.textColor,
                 letterSpacing: -14 * 0.01,
               ),
             ),
