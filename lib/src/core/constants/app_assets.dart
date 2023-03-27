@@ -22,8 +22,15 @@ class AppAssets {
   /// png
   static const String pngCarouselDemoItem = '$_pngPath/demo_slider_image.png';
   static const String pngDemoShopBanner = '$_pngPath/demo_shop_banner.png';
-  static const String pngDemoShopMiniBanner =
-      '$_pngPath/demo_shop_mini_banner.png';
+  static const String pngDemoShopMiniBanner = '$_pngPath/demo_shop_mini_banner.png';
+  static const String pngIcCard = '$_pngPath/payment.png';
+  static const String cardBack1 = '$_pngPath/cardBack.jpeg';
+  static const String cardBack2 = '$_pngPath/cardBack2.jpeg';
+  static const String cardBack3 = '$_pngPath/cardBack3.jpeg';
+  static const String cardBack4 = '$_pngPath/cardBack4.jpeg';
+  static const String humoLogo = '$_pngPath/humo.png';
+  static const String uzcardLogo = '$_pngPath/uzcard.png';
+  static const String videoInit = '$_pngPath/video_init.jpeg';
   static const String pngIcLocationPin = '$_pngPath/ic_location_pin.png';
   static const String pngNoStoreImage = '$_pngPath/no_store_image.png';
   static const String pngNoViewedProducts = '$_pngPath/no_viewed_products.png';

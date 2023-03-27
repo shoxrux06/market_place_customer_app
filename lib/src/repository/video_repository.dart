@@ -7,14 +7,11 @@ import 'dart:io';
 
 abstract class VideoRepository {
   Future<ApiResult<VideoResponse>> createVideo({
-    required String userId,
+    required int userId,
     required File name,
+    required File banner,
     required String description,
   });
 
   Future<ApiResult<VideoListResponse>> getVideoList();
-
-  Future<ApiResult<UserResponse>> getUsers();
-
-
 }

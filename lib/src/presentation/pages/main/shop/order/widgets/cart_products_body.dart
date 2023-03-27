@@ -13,6 +13,8 @@ class CartProductsBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(orderProvider);
+    print('Order <<<<${state.shopTotals}>>>>');
+    print('Order length<<<<${state.shopTotals.length}>>>>');
     return SingleChildScrollView(
       physics: const CustomBouncingScrollPhysics(),
       primary: true,

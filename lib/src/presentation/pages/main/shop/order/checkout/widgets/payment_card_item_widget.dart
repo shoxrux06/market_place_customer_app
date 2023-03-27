@@ -66,7 +66,7 @@ class PaymentCardItemWidget extends StatelessWidget {
                       ),
                       10.horizontalSpace,
                       Text(
-                        '${payment.translation?.title}',
+                        '${payment.tag}',
                         style: GoogleFonts.k2d(
                           fontWeight: FontWeight.w600,
                           fontSize: 16.sp,

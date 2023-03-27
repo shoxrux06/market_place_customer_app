@@ -47,8 +47,7 @@ class SystemSettingsPage extends ConsumerWidget {
                 children: [
                   OpenModalButton(
                     iconData: FlutterRemix.global_fill,
-                    title:
-                        '${AppHelpers.getTranslation(TrKeys.language)} - ${LocalStorage.instance.getLanguage()?.title}',
+                    title: '${AppHelpers.getTranslation(TrKeys.language)} - ${LocalStorage.instance.getLanguage()?.title}',
                     onTap: () => context.pushRoute(SelectLanguageRoute()),
                   ),
                   10.verticalSpace,

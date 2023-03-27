@@ -18,9 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddVideoState {
   MediaInfo? get mediaInfo => throw _privateConstructorUsedError;
   List<Video> get videoList => throw _privateConstructorUsedError;
+  bool get isFetchingVideo => throw _privateConstructorUsedError;
   bool get isCompressingVideo => throw _privateConstructorUsedError;
   bool get isUploadingVideo => throw _privateConstructorUsedError;
   File? get videoFile => throw _privateConstructorUsedError;
+  File? get imageFile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddVideoStateCopyWith<AddVideoState> get copyWith =>
@@ -35,9 +37,11 @@ abstract class $AddVideoStateCopyWith<$Res> {
   $Res call(
       {MediaInfo? mediaInfo,
       List<Video> videoList,
+      bool isFetchingVideo,
       bool isCompressingVideo,
       bool isUploadingVideo,
-      File? videoFile});
+      File? videoFile,
+      File? imageFile});
 }
 
 /// @nodoc
@@ -53,9 +57,11 @@ class _$AddVideoStateCopyWithImpl<$Res>
   $Res call({
     Object? mediaInfo = freezed,
     Object? videoList = freezed,
+    Object? isFetchingVideo = freezed,
     Object? isCompressingVideo = freezed,
     Object? isUploadingVideo = freezed,
     Object? videoFile = freezed,
+    Object? imageFile = freezed,
   }) {
     return _then(_value.copyWith(
       mediaInfo: mediaInfo == freezed
@@ -66,6 +72,10 @@ class _$AddVideoStateCopyWithImpl<$Res>
           ? _value.videoList
           : videoList // ignore: cast_nullable_to_non_nullable
               as List<Video>,
+      isFetchingVideo: isFetchingVideo == freezed
+          ? _value.isFetchingVideo
+          : isFetchingVideo // ignore: cast_nullable_to_non_nullable
+              as bool,
       isCompressingVideo: isCompressingVideo == freezed
           ? _value.isCompressingVideo
           : isCompressingVideo // ignore: cast_nullable_to_non_nullable
@@ -77,6 +87,10 @@ class _$AddVideoStateCopyWithImpl<$Res>
       videoFile: videoFile == freezed
           ? _value.videoFile
           : videoFile // ignore: cast_nullable_to_non_nullable
+              as File?,
+      imageFile: imageFile == freezed
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
               as File?,
     ));
   }
@@ -92,9 +106,11 @@ abstract class _$$_AddVideoStateCopyWith<$Res>
   $Res call(
       {MediaInfo? mediaInfo,
       List<Video> videoList,
+      bool isFetchingVideo,
       bool isCompressingVideo,
       bool isUploadingVideo,
-      File? videoFile});
+      File? videoFile,
+      File? imageFile});
 }
 
 /// @nodoc
@@ -112,9 +128,11 @@ class __$$_AddVideoStateCopyWithImpl<$Res>
   $Res call({
     Object? mediaInfo = freezed,
     Object? videoList = freezed,
+    Object? isFetchingVideo = freezed,
     Object? isCompressingVideo = freezed,
     Object? isUploadingVideo = freezed,
     Object? videoFile = freezed,
+    Object? imageFile = freezed,
   }) {
     return _then(_$_AddVideoState(
       mediaInfo: mediaInfo == freezed
@@ -125,6 +143,10 @@ class __$$_AddVideoStateCopyWithImpl<$Res>
           ? _value._videoList
           : videoList // ignore: cast_nullable_to_non_nullable
               as List<Video>,
+      isFetchingVideo: isFetchingVideo == freezed
+          ? _value.isFetchingVideo
+          : isFetchingVideo // ignore: cast_nullable_to_non_nullable
+              as bool,
       isCompressingVideo: isCompressingVideo == freezed
           ? _value.isCompressingVideo
           : isCompressingVideo // ignore: cast_nullable_to_non_nullable
@@ -137,6 +159,10 @@ class __$$_AddVideoStateCopyWithImpl<$Res>
           ? _value.videoFile
           : videoFile // ignore: cast_nullable_to_non_nullable
               as File?,
+      imageFile: imageFile == freezed
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -147,9 +173,11 @@ class _$_AddVideoState extends _AddVideoState {
   const _$_AddVideoState(
       {required this.mediaInfo,
       final List<Video> videoList = const [],
+      this.isFetchingVideo = false,
       this.isCompressingVideo = false,
       this.isUploadingVideo = false,
-      required this.videoFile})
+      required this.videoFile,
+      required this.imageFile})
       : _videoList = videoList,
         super._();
 
@@ -165,16 +193,21 @@ class _$_AddVideoState extends _AddVideoState {
 
   @override
   @JsonKey()
+  final bool isFetchingVideo;
+  @override
+  @JsonKey()
   final bool isCompressingVideo;
   @override
   @JsonKey()
   final bool isUploadingVideo;
   @override
   final File? videoFile;
+  @override
+  final File? imageFile;
 
   @override
   String toString() {
-    return 'AddVideoState(mediaInfo: $mediaInfo, videoList: $videoList, isCompressingVideo: $isCompressingVideo, isUploadingVideo: $isUploadingVideo, videoFile: $videoFile)';
+    return 'AddVideoState(mediaInfo: $mediaInfo, videoList: $videoList, isFetchingVideo: $isFetchingVideo, isCompressingVideo: $isCompressingVideo, isUploadingVideo: $isUploadingVideo, videoFile: $videoFile, imageFile: $imageFile)';
   }
 
   @override
@@ -186,10 +219,13 @@ class _$_AddVideoState extends _AddVideoState {
             const DeepCollectionEquality()
                 .equals(other._videoList, _videoList) &&
             const DeepCollectionEquality()
+                .equals(other.isFetchingVideo, isFetchingVideo) &&
+            const DeepCollectionEquality()
                 .equals(other.isCompressingVideo, isCompressingVideo) &&
             const DeepCollectionEquality()
                 .equals(other.isUploadingVideo, isUploadingVideo) &&
-            const DeepCollectionEquality().equals(other.videoFile, videoFile));
+            const DeepCollectionEquality().equals(other.videoFile, videoFile) &&
+            const DeepCollectionEquality().equals(other.imageFile, imageFile));
   }
 
   @override
@@ -197,9 +233,11 @@ class _$_AddVideoState extends _AddVideoState {
       runtimeType,
       const DeepCollectionEquality().hash(mediaInfo),
       const DeepCollectionEquality().hash(_videoList),
+      const DeepCollectionEquality().hash(isFetchingVideo),
       const DeepCollectionEquality().hash(isCompressingVideo),
       const DeepCollectionEquality().hash(isUploadingVideo),
-      const DeepCollectionEquality().hash(videoFile));
+      const DeepCollectionEquality().hash(videoFile),
+      const DeepCollectionEquality().hash(imageFile));
 
   @JsonKey(ignore: true)
   @override
@@ -211,9 +249,11 @@ abstract class _AddVideoState extends AddVideoState {
   const factory _AddVideoState(
       {required final MediaInfo? mediaInfo,
       final List<Video> videoList,
+      final bool isFetchingVideo,
       final bool isCompressingVideo,
       final bool isUploadingVideo,
-      required final File? videoFile}) = _$_AddVideoState;
+      required final File? videoFile,
+      required final File? imageFile}) = _$_AddVideoState;
   const _AddVideoState._() : super._();
 
   @override
@@ -221,11 +261,15 @@ abstract class _AddVideoState extends AddVideoState {
   @override
   List<Video> get videoList;
   @override
+  bool get isFetchingVideo;
+  @override
   bool get isCompressingVideo;
   @override
   bool get isUploadingVideo;
   @override
   File? get videoFile;
+  @override
+  File? get imageFile;
   @override
   @JsonKey(ignore: true)
   _$$_AddVideoStateCopyWith<_$_AddVideoState> get copyWith =>

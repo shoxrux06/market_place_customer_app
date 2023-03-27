@@ -17,6 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CheckoutState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isCardBinding => throw _privateConstructorUsedError;
+  bool get isConfirmLoading => throw _privateConstructorUsedError;
+  bool get isResending => throw _privateConstructorUsedError;
+  bool get isTimeExpired => throw _privateConstructorUsedError;
+  bool get isCodeError => throw _privateConstructorUsedError;
+  bool get isInitializing => throw _privateConstructorUsedError;
+  bool get isCardListLoading => throw _privateConstructorUsedError;
   bool get isStoreAddressLoading => throw _privateConstructorUsedError;
   bool get isPaymentsLoading => throw _privateConstructorUsedError;
   bool get isShopDeliveriesLoading => throw _privateConstructorUsedError;
@@ -37,11 +44,16 @@ mixin _$CheckoutState {
   List<ShippingData> get shippingDataList => throw _privateConstructorUsedError;
   List<PaymentData> get payments => throw _privateConstructorUsedError;
   List<ApplyCouponData> get applyCoupons => throw _privateConstructorUsedError;
+  List<CardList> get cardList => throw _privateConstructorUsedError;
   Map<MarkerId, Marker> get markers => throw _privateConstructorUsedError;
   LatLng? get initialLatLng => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
   ProductCalculateResponse? get calculateResponse =>
       throw _privateConstructorUsedError;
+  BindCardResponse? get bindCard => throw _privateConstructorUsedError;
+  TokenResponse? get tokenResponse => throw _privateConstructorUsedError;
+  String get confirmCode => throw _privateConstructorUsedError;
+  String get timerText => throw _privateConstructorUsedError;
   Razorpay? get razorpay => throw _privateConstructorUsedError;
   PaystackPlugin? get payStack => throw _privateConstructorUsedError;
 
@@ -57,6 +69,13 @@ abstract class $CheckoutStateCopyWith<$Res> {
       _$CheckoutStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
+      bool isCardBinding,
+      bool isConfirmLoading,
+      bool isResending,
+      bool isTimeExpired,
+      bool isCodeError,
+      bool isInitializing,
+      bool isCardListLoading,
       bool isStoreAddressLoading,
       bool isPaymentsLoading,
       bool isShopDeliveriesLoading,
@@ -77,10 +96,15 @@ abstract class $CheckoutStateCopyWith<$Res> {
       List<ShippingData> shippingDataList,
       List<PaymentData> payments,
       List<ApplyCouponData> applyCoupons,
+      List<CardList> cardList,
       Map<MarkerId, Marker> markers,
       LatLng? initialLatLng,
       String? comment,
       ProductCalculateResponse? calculateResponse,
+      BindCardResponse? bindCard,
+      TokenResponse? tokenResponse,
+      String confirmCode,
+      String timerText,
       Razorpay? razorpay,
       PaystackPlugin? payStack});
 }
@@ -97,6 +121,13 @@ class _$CheckoutStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isCardBinding = freezed,
+    Object? isConfirmLoading = freezed,
+    Object? isResending = freezed,
+    Object? isTimeExpired = freezed,
+    Object? isCodeError = freezed,
+    Object? isInitializing = freezed,
+    Object? isCardListLoading = freezed,
     Object? isStoreAddressLoading = freezed,
     Object? isPaymentsLoading = freezed,
     Object? isShopDeliveriesLoading = freezed,
@@ -117,10 +148,15 @@ class _$CheckoutStateCopyWithImpl<$Res>
     Object? shippingDataList = freezed,
     Object? payments = freezed,
     Object? applyCoupons = freezed,
+    Object? cardList = freezed,
     Object? markers = freezed,
     Object? initialLatLng = freezed,
     Object? comment = freezed,
     Object? calculateResponse = freezed,
+    Object? bindCard = freezed,
+    Object? tokenResponse = freezed,
+    Object? confirmCode = freezed,
+    Object? timerText = freezed,
     Object? razorpay = freezed,
     Object? payStack = freezed,
   }) {
@@ -128,6 +164,34 @@ class _$CheckoutStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCardBinding: isCardBinding == freezed
+          ? _value.isCardBinding
+          : isCardBinding // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConfirmLoading: isConfirmLoading == freezed
+          ? _value.isConfirmLoading
+          : isConfirmLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isResending: isResending == freezed
+          ? _value.isResending
+          : isResending // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isTimeExpired: isTimeExpired == freezed
+          ? _value.isTimeExpired
+          : isTimeExpired // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCodeError: isCodeError == freezed
+          ? _value.isCodeError
+          : isCodeError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInitializing: isInitializing == freezed
+          ? _value.isInitializing
+          : isInitializing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCardListLoading: isCardListLoading == freezed
+          ? _value.isCardListLoading
+          : isCardListLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       isStoreAddressLoading: isStoreAddressLoading == freezed
           ? _value.isStoreAddressLoading
@@ -209,6 +273,10 @@ class _$CheckoutStateCopyWithImpl<$Res>
           ? _value.applyCoupons
           : applyCoupons // ignore: cast_nullable_to_non_nullable
               as List<ApplyCouponData>,
+      cardList: cardList == freezed
+          ? _value.cardList
+          : cardList // ignore: cast_nullable_to_non_nullable
+              as List<CardList>,
       markers: markers == freezed
           ? _value.markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -225,6 +293,22 @@ class _$CheckoutStateCopyWithImpl<$Res>
           ? _value.calculateResponse
           : calculateResponse // ignore: cast_nullable_to_non_nullable
               as ProductCalculateResponse?,
+      bindCard: bindCard == freezed
+          ? _value.bindCard
+          : bindCard // ignore: cast_nullable_to_non_nullable
+              as BindCardResponse?,
+      tokenResponse: tokenResponse == freezed
+          ? _value.tokenResponse
+          : tokenResponse // ignore: cast_nullable_to_non_nullable
+              as TokenResponse?,
+      confirmCode: confirmCode == freezed
+          ? _value.confirmCode
+          : confirmCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      timerText: timerText == freezed
+          ? _value.timerText
+          : timerText // ignore: cast_nullable_to_non_nullable
+              as String,
       razorpay: razorpay == freezed
           ? _value.razorpay
           : razorpay // ignore: cast_nullable_to_non_nullable
@@ -246,6 +330,13 @@ abstract class _$$_CheckoutStateCopyWith<$Res>
   @override
   $Res call(
       {bool isLoading,
+      bool isCardBinding,
+      bool isConfirmLoading,
+      bool isResending,
+      bool isTimeExpired,
+      bool isCodeError,
+      bool isInitializing,
+      bool isCardListLoading,
       bool isStoreAddressLoading,
       bool isPaymentsLoading,
       bool isShopDeliveriesLoading,
@@ -266,10 +357,15 @@ abstract class _$$_CheckoutStateCopyWith<$Res>
       List<ShippingData> shippingDataList,
       List<PaymentData> payments,
       List<ApplyCouponData> applyCoupons,
+      List<CardList> cardList,
       Map<MarkerId, Marker> markers,
       LatLng? initialLatLng,
       String? comment,
       ProductCalculateResponse? calculateResponse,
+      BindCardResponse? bindCard,
+      TokenResponse? tokenResponse,
+      String confirmCode,
+      String timerText,
       Razorpay? razorpay,
       PaystackPlugin? payStack});
 }
@@ -288,6 +384,13 @@ class __$$_CheckoutStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isCardBinding = freezed,
+    Object? isConfirmLoading = freezed,
+    Object? isResending = freezed,
+    Object? isTimeExpired = freezed,
+    Object? isCodeError = freezed,
+    Object? isInitializing = freezed,
+    Object? isCardListLoading = freezed,
     Object? isStoreAddressLoading = freezed,
     Object? isPaymentsLoading = freezed,
     Object? isShopDeliveriesLoading = freezed,
@@ -308,10 +411,15 @@ class __$$_CheckoutStateCopyWithImpl<$Res>
     Object? shippingDataList = freezed,
     Object? payments = freezed,
     Object? applyCoupons = freezed,
+    Object? cardList = freezed,
     Object? markers = freezed,
     Object? initialLatLng = freezed,
     Object? comment = freezed,
     Object? calculateResponse = freezed,
+    Object? bindCard = freezed,
+    Object? tokenResponse = freezed,
+    Object? confirmCode = freezed,
+    Object? timerText = freezed,
     Object? razorpay = freezed,
     Object? payStack = freezed,
   }) {
@@ -319,6 +427,34 @@ class __$$_CheckoutStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCardBinding: isCardBinding == freezed
+          ? _value.isCardBinding
+          : isCardBinding // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConfirmLoading: isConfirmLoading == freezed
+          ? _value.isConfirmLoading
+          : isConfirmLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isResending: isResending == freezed
+          ? _value.isResending
+          : isResending // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isTimeExpired: isTimeExpired == freezed
+          ? _value.isTimeExpired
+          : isTimeExpired // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCodeError: isCodeError == freezed
+          ? _value.isCodeError
+          : isCodeError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isInitializing: isInitializing == freezed
+          ? _value.isInitializing
+          : isInitializing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCardListLoading: isCardListLoading == freezed
+          ? _value.isCardListLoading
+          : isCardListLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       isStoreAddressLoading: isStoreAddressLoading == freezed
           ? _value.isStoreAddressLoading
@@ -400,6 +536,10 @@ class __$$_CheckoutStateCopyWithImpl<$Res>
           ? _value._applyCoupons
           : applyCoupons // ignore: cast_nullable_to_non_nullable
               as List<ApplyCouponData>,
+      cardList: cardList == freezed
+          ? _value._cardList
+          : cardList // ignore: cast_nullable_to_non_nullable
+              as List<CardList>,
       markers: markers == freezed
           ? _value._markers
           : markers // ignore: cast_nullable_to_non_nullable
@@ -416,6 +556,22 @@ class __$$_CheckoutStateCopyWithImpl<$Res>
           ? _value.calculateResponse
           : calculateResponse // ignore: cast_nullable_to_non_nullable
               as ProductCalculateResponse?,
+      bindCard: bindCard == freezed
+          ? _value.bindCard
+          : bindCard // ignore: cast_nullable_to_non_nullable
+              as BindCardResponse?,
+      tokenResponse: tokenResponse == freezed
+          ? _value.tokenResponse
+          : tokenResponse // ignore: cast_nullable_to_non_nullable
+              as TokenResponse?,
+      confirmCode: confirmCode == freezed
+          ? _value.confirmCode
+          : confirmCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      timerText: timerText == freezed
+          ? _value.timerText
+          : timerText // ignore: cast_nullable_to_non_nullable
+              as String,
       razorpay: razorpay == freezed
           ? _value.razorpay
           : razorpay // ignore: cast_nullable_to_non_nullable
@@ -433,6 +589,13 @@ class __$$_CheckoutStateCopyWithImpl<$Res>
 class _$_CheckoutState extends _CheckoutState {
   const _$_CheckoutState(
       {this.isLoading = false,
+      this.isCardBinding = false,
+      this.isConfirmLoading = false,
+      this.isResending = false,
+      this.isTimeExpired = false,
+      this.isCodeError = false,
+      this.isInitializing = false,
+      this.isCardListLoading = false,
       this.isStoreAddressLoading = false,
       this.isPaymentsLoading = false,
       this.isShopDeliveriesLoading = false,
@@ -453,22 +616,49 @@ class _$_CheckoutState extends _CheckoutState {
       final List<ShippingData> shippingDataList = const [],
       final List<PaymentData> payments = const [],
       final List<ApplyCouponData> applyCoupons = const [],
+      final List<CardList> cardList = const [],
       final Map<MarkerId, Marker> markers = const {},
       this.initialLatLng,
       this.comment,
       this.calculateResponse,
+      this.bindCard,
+      this.tokenResponse,
+      this.confirmCode = '',
+      this.timerText = '',
       this.razorpay,
       this.payStack})
       : _shops = shops,
         _shippingDataList = shippingDataList,
         _payments = payments,
         _applyCoupons = applyCoupons,
+        _cardList = cardList,
         _markers = markers,
         super._();
 
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isCardBinding;
+  @override
+  @JsonKey()
+  final bool isConfirmLoading;
+  @override
+  @JsonKey()
+  final bool isResending;
+  @override
+  @JsonKey()
+  final bool isTimeExpired;
+  @override
+  @JsonKey()
+  final bool isCodeError;
+  @override
+  @JsonKey()
+  final bool isInitializing;
+  @override
+  @JsonKey()
+  final bool isCardListLoading;
   @override
   @JsonKey()
   final bool isStoreAddressLoading;
@@ -549,6 +739,14 @@ class _$_CheckoutState extends _CheckoutState {
     return EqualUnmodifiableListView(_applyCoupons);
   }
 
+  final List<CardList> _cardList;
+  @override
+  @JsonKey()
+  List<CardList> get cardList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cardList);
+  }
+
   final Map<MarkerId, Marker> _markers;
   @override
   @JsonKey()
@@ -564,13 +762,23 @@ class _$_CheckoutState extends _CheckoutState {
   @override
   final ProductCalculateResponse? calculateResponse;
   @override
+  final BindCardResponse? bindCard;
+  @override
+  final TokenResponse? tokenResponse;
+  @override
+  @JsonKey()
+  final String confirmCode;
+  @override
+  @JsonKey()
+  final String timerText;
+  @override
   final Razorpay? razorpay;
   @override
   final PaystackPlugin? payStack;
 
   @override
   String toString() {
-    return 'CheckoutState(isLoading: $isLoading, isStoreAddressLoading: $isStoreAddressLoading, isPaymentsLoading: $isPaymentsLoading, isShopDeliveriesLoading: $isShopDeliveriesLoading, isCreatingOrder: $isCreatingOrder, isContinueEnabled: $isContinueEnabled, isCalculationsLoading: $isCalculationsLoading, isCheckingCoupon: $isCheckingCoupon, isPaymentValid: $isPaymentValid, isAddressCreating: $isAddressCreating, isCheckingCashback: $isCheckingCashback, activePage: $activePage, selectedShopIndex: $selectedShopIndex, selectedPaymentIndex: $selectedPaymentIndex, addressIndex: $addressIndex, deliveryFee: $deliveryFee, cashbackAmount: $cashbackAmount, shops: $shops, shippingDataList: $shippingDataList, payments: $payments, applyCoupons: $applyCoupons, markers: $markers, initialLatLng: $initialLatLng, comment: $comment, calculateResponse: $calculateResponse, razorpay: $razorpay, payStack: $payStack)';
+    return 'CheckoutState(isLoading: $isLoading, isCardBinding: $isCardBinding, isConfirmLoading: $isConfirmLoading, isResending: $isResending, isTimeExpired: $isTimeExpired, isCodeError: $isCodeError, isInitializing: $isInitializing, isCardListLoading: $isCardListLoading, isStoreAddressLoading: $isStoreAddressLoading, isPaymentsLoading: $isPaymentsLoading, isShopDeliveriesLoading: $isShopDeliveriesLoading, isCreatingOrder: $isCreatingOrder, isContinueEnabled: $isContinueEnabled, isCalculationsLoading: $isCalculationsLoading, isCheckingCoupon: $isCheckingCoupon, isPaymentValid: $isPaymentValid, isAddressCreating: $isAddressCreating, isCheckingCashback: $isCheckingCashback, activePage: $activePage, selectedShopIndex: $selectedShopIndex, selectedPaymentIndex: $selectedPaymentIndex, addressIndex: $addressIndex, deliveryFee: $deliveryFee, cashbackAmount: $cashbackAmount, shops: $shops, shippingDataList: $shippingDataList, payments: $payments, applyCoupons: $applyCoupons, cardList: $cardList, markers: $markers, initialLatLng: $initialLatLng, comment: $comment, calculateResponse: $calculateResponse, bindCard: $bindCard, tokenResponse: $tokenResponse, confirmCode: $confirmCode, timerText: $timerText, razorpay: $razorpay, payStack: $payStack)';
   }
 
   @override
@@ -579,6 +787,20 @@ class _$_CheckoutState extends _CheckoutState {
         (other.runtimeType == runtimeType &&
             other is _$_CheckoutState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other.isCardBinding, isCardBinding) &&
+            const DeepCollectionEquality()
+                .equals(other.isConfirmLoading, isConfirmLoading) &&
+            const DeepCollectionEquality()
+                .equals(other.isResending, isResending) &&
+            const DeepCollectionEquality()
+                .equals(other.isTimeExpired, isTimeExpired) &&
+            const DeepCollectionEquality()
+                .equals(other.isCodeError, isCodeError) &&
+            const DeepCollectionEquality()
+                .equals(other.isInitializing, isInitializing) &&
+            const DeepCollectionEquality()
+                .equals(other.isCardListLoading, isCardListLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isStoreAddressLoading, isStoreAddressLoading) &&
             const DeepCollectionEquality()
@@ -617,12 +839,19 @@ class _$_CheckoutState extends _CheckoutState {
             const DeepCollectionEquality().equals(other._payments, _payments) &&
             const DeepCollectionEquality()
                 .equals(other._applyCoupons, _applyCoupons) &&
+            const DeepCollectionEquality().equals(other._cardList, _cardList) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             const DeepCollectionEquality()
                 .equals(other.initialLatLng, initialLatLng) &&
             const DeepCollectionEquality().equals(other.comment, comment) &&
             const DeepCollectionEquality()
                 .equals(other.calculateResponse, calculateResponse) &&
+            const DeepCollectionEquality().equals(other.bindCard, bindCard) &&
+            const DeepCollectionEquality()
+                .equals(other.tokenResponse, tokenResponse) &&
+            const DeepCollectionEquality()
+                .equals(other.confirmCode, confirmCode) &&
+            const DeepCollectionEquality().equals(other.timerText, timerText) &&
             const DeepCollectionEquality().equals(other.razorpay, razorpay) &&
             const DeepCollectionEquality().equals(other.payStack, payStack));
   }
@@ -631,6 +860,13 @@ class _$_CheckoutState extends _CheckoutState {
   int get hashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(isLoading),
+        const DeepCollectionEquality().hash(isCardBinding),
+        const DeepCollectionEquality().hash(isConfirmLoading),
+        const DeepCollectionEquality().hash(isResending),
+        const DeepCollectionEquality().hash(isTimeExpired),
+        const DeepCollectionEquality().hash(isCodeError),
+        const DeepCollectionEquality().hash(isInitializing),
+        const DeepCollectionEquality().hash(isCardListLoading),
         const DeepCollectionEquality().hash(isStoreAddressLoading),
         const DeepCollectionEquality().hash(isPaymentsLoading),
         const DeepCollectionEquality().hash(isShopDeliveriesLoading),
@@ -651,10 +887,15 @@ class _$_CheckoutState extends _CheckoutState {
         const DeepCollectionEquality().hash(_shippingDataList),
         const DeepCollectionEquality().hash(_payments),
         const DeepCollectionEquality().hash(_applyCoupons),
+        const DeepCollectionEquality().hash(_cardList),
         const DeepCollectionEquality().hash(_markers),
         const DeepCollectionEquality().hash(initialLatLng),
         const DeepCollectionEquality().hash(comment),
         const DeepCollectionEquality().hash(calculateResponse),
+        const DeepCollectionEquality().hash(bindCard),
+        const DeepCollectionEquality().hash(tokenResponse),
+        const DeepCollectionEquality().hash(confirmCode),
+        const DeepCollectionEquality().hash(timerText),
         const DeepCollectionEquality().hash(razorpay),
         const DeepCollectionEquality().hash(payStack)
       ]);
@@ -668,6 +909,13 @@ class _$_CheckoutState extends _CheckoutState {
 abstract class _CheckoutState extends CheckoutState {
   const factory _CheckoutState(
       {final bool isLoading,
+      final bool isCardBinding,
+      final bool isConfirmLoading,
+      final bool isResending,
+      final bool isTimeExpired,
+      final bool isCodeError,
+      final bool isInitializing,
+      final bool isCardListLoading,
       final bool isStoreAddressLoading,
       final bool isPaymentsLoading,
       final bool isShopDeliveriesLoading,
@@ -688,16 +936,35 @@ abstract class _CheckoutState extends CheckoutState {
       final List<ShippingData> shippingDataList,
       final List<PaymentData> payments,
       final List<ApplyCouponData> applyCoupons,
+      final List<CardList> cardList,
       final Map<MarkerId, Marker> markers,
       final LatLng? initialLatLng,
       final String? comment,
       final ProductCalculateResponse? calculateResponse,
+      final BindCardResponse? bindCard,
+      final TokenResponse? tokenResponse,
+      final String confirmCode,
+      final String timerText,
       final Razorpay? razorpay,
       final PaystackPlugin? payStack}) = _$_CheckoutState;
   const _CheckoutState._() : super._();
 
   @override
   bool get isLoading;
+  @override
+  bool get isCardBinding;
+  @override
+  bool get isConfirmLoading;
+  @override
+  bool get isResending;
+  @override
+  bool get isTimeExpired;
+  @override
+  bool get isCodeError;
+  @override
+  bool get isInitializing;
+  @override
+  bool get isCardListLoading;
   @override
   bool get isStoreAddressLoading;
   @override
@@ -739,6 +1006,8 @@ abstract class _CheckoutState extends CheckoutState {
   @override
   List<ApplyCouponData> get applyCoupons;
   @override
+  List<CardList> get cardList;
+  @override
   Map<MarkerId, Marker> get markers;
   @override
   LatLng? get initialLatLng;
@@ -746,6 +1015,14 @@ abstract class _CheckoutState extends CheckoutState {
   String? get comment;
   @override
   ProductCalculateResponse? get calculateResponse;
+  @override
+  BindCardResponse? get bindCard;
+  @override
+  TokenResponse? get tokenResponse;
+  @override
+  String get confirmCode;
+  @override
+  String get timerText;
   @override
   Razorpay? get razorpay;
   @override

@@ -640,6 +640,134 @@ class CheckoutNotifier extends StateNotifier<CheckoutState> {
     }
   }
 
+  Future<void> getToken(BuildContext context) async {
+    final connected = await AppConnectivity.connectivity();
+    if (connected) {
+      final bindCardResponse = await _paymentsRepository.getToken();
+      bindCardResponse.when(
+        success: (token) {
+          state = state.copyWith(tokenResponse: token);
+          LocalStorage.instance.setCardToken(token.accessToken);
+          print('getToken <<$token>>');
+        },
+        failure: (bindCardFailure) {
+          AppHelpers.showCheckFlash(
+            context,
+            'Error with getToken!',
+          );
+        },
+      );
+    } else {
+      if (mounted) {
+        AppHelpers.showCheckFlash(
+          context,
+          AppHelpers.getTranslation(TrKeys.checkYourNetworkConnection),
+        );
+      }
+    }
+  }
+
+
+  Future<void> bindCard(BuildContext context, String cardNumber,String expiry) async {
+    final connected = await AppConnectivity.connectivity();
+    if (connected) {
+      state = state.copyWith(isCardBinding: true);
+      final bindCardResponse = await _paymentsRepository.bindCard(
+        cardNumber: cardNumber,
+        expiry: expiry,
+      );
+      bindCardResponse.when(
+        success: (bindCard) {
+          print('bindCard**$bindCard**');
+          state = state.copyWith(isCardBinding: false, bindCard: bindCard);
+          context.pushRoute(const CardConfirmationRoute());
+        },
+        failure: (bindCardFailure) {
+          state = state.copyWith(isCardBinding: false);
+          // context.pushRoute(const OrderHistoryRoute());
+          AppHelpers.showCheckFlash(
+            context,
+            'Error with bindCard!',
+          );
+        },
+      );
+    } else {
+      if (mounted) {
+        AppHelpers.showCheckFlash(
+          context,
+          AppHelpers.getTranslation(TrKeys.checkYourNetworkConnection),
+        );
+      }
+    }
+  }
+
+  void setCode(String? code) {
+    state = state.copyWith(confirmCode: code?.trim() ?? '', isCodeError: false);
+  }
+
+  Future<void> bindCardApply(BuildContext context, String transactionId,String otp) async {
+    final connected = await AppConnectivity.connectivity();
+    if (connected) {
+      state = state.copyWith(isConfirmLoading: true);
+      final bindCardApplyResponse = await _paymentsRepository.bindCardApply(
+        transactionId: transactionId,
+        otp: otp,
+      );
+      bindCardApplyResponse.when(
+        success: (bindCardApply) {
+          print('bindCardApply**$bindCardApply**');
+          state = state.copyWith(isConfirmLoading: false, confirmCode: state.confirmCode);
+          context.replaceRoute(const AddCardSuccessRoute());
+        },
+        failure: (bindCardFailure) {
+          state = state.copyWith(isConfirmLoading: false);
+          AppHelpers.showCheckFlash(
+            context,
+            'Error with bindCard Apply!',
+          );
+        },
+      );
+    } else {
+      if (mounted) {
+        AppHelpers.showCheckFlash(
+          context,
+          AppHelpers.getTranslation(TrKeys.checkYourNetworkConnection),
+        );
+      }
+    }
+  }
+
+  Future<void> getCardList(BuildContext context, int page,int pageSize) async {
+    final connected = await AppConnectivity.connectivity();
+    if (connected) {
+      state = state.copyWith(cardList:[],isCardListLoading: true);
+      final bindCardApplyResponse = await _paymentsRepository.getCardList(
+        page: page,
+        pageSize: pageSize,
+      );
+      bindCardApplyResponse.when(
+        success: (card) {
+          print('getCardList**$card**');
+          state = state.copyWith(cardList:card.cardList, isCardListLoading: false);
+        },
+        failure: (bindCardFailure) {
+          state = state.copyWith(isCardListLoading: false);
+          AppHelpers.showCheckFlash(
+            context,
+            'Error with getCardList!',
+          );
+        },
+      );
+    } else {
+      if (mounted) {
+        AppHelpers.showCheckFlash(
+          context,
+          AppHelpers.getTranslation(TrKeys.checkYourNetworkConnection),
+        );
+      }
+    }
+  }
+
   Future<void> makePayStackPayment(BuildContext context, double amount) async {
     final Charge charge = Charge()
       ..amount = (amount * 100).toInt()
@@ -870,6 +998,37 @@ class CheckoutNotifier extends StateNotifier<CheckoutState> {
     try {
       Map<String, dynamic>? paymentIntentData =
           await createStripePaymentIntent(context, amount, orderId);
+      if (paymentIntentData != null) {
+        await Stripe.instance.initPaymentSheet(
+          paymentSheetParameters: SetupPaymentSheetParameters(
+            merchantDisplayName: 'Prospects',
+            customerId: paymentIntentData['customer'],
+            paymentIntentClientSecret: paymentIntentData['client_secret'],
+            customerEphemeralKeySecret: paymentIntentData['ephemeralKey'],
+          ),
+        );
+        await Stripe.instance
+            .presentPaymentSheet()
+            .then((value) => createTransaction(context, orderId));
+        debugPrint('===> stripe payment succeeded');
+      }
+    } catch (e) {
+      AppHelpers.showCheckFlash(
+        context,
+        AppHelpers.getTranslation(TrKeys.errorOccurredWithPayingViaStripe),
+      );
+      createTransaction(context, orderId);
+    }
+  }
+
+  Future<void> makeHumoPayment(
+      BuildContext context,
+      double amount,
+      int? orderId,
+      ) async {
+    try {
+      Map<String, dynamic>? paymentIntentData =
+      await createStripePaymentIntent(context, amount, orderId);
       if (paymentIntentData != null) {
         await Stripe.instance.initPaymentSheet(
           paymentSheetParameters: SetupPaymentSheetParameters(

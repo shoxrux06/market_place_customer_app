@@ -41,7 +41,7 @@ class Video {
     id: json["id"],
     userId: json["user_id"],
     imageName: json["image_name"],
-    description: json["description"],
+    description: json["description"]?? '',
   );
 
   Map<String, dynamic> toJson() => {

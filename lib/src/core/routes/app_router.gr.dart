@@ -447,6 +447,60 @@ class AppRouter extends _i2.RootStackRouter {
         barrierDismissible: false,
       );
     },
+    ShopsAndBrandsRoute.name: (routeData) {
+      final args = routeData.argsAs<ShopsAndBrandsRouteArgs>();
+      return _i2.CustomPage<dynamic>(
+        routeData: routeData,
+        child: _i1.ShopsAndBrandsPage(
+          key: args.key,
+          shopName: args.shopName,
+        ),
+        transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    CardRoute.name: (routeData) {
+      return _i2.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i1.CardPage(),
+        transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    AddCardRoute.name: (routeData) {
+      return _i2.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i1.AddCardPage(),
+        transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    CardConfirmationRoute.name: (routeData) {
+      return _i2.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i1.CardConfirmationPage(),
+        transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    AddCardSuccessRoute.name: (routeData) {
+      return _i2.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i1.AddCardSuccessPage(),
+        transitionsBuilder: _i2.TransitionsBuilders.slideLeft,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     ShopListRoute.name: (routeData) {
       return _i2.CustomPage<dynamic>(
         routeData: routeData,
@@ -700,6 +754,26 @@ class AppRouter extends _i2.RootStackRouter {
         _i2.RouteConfig(
           LooksRoute.name,
           path: '/looks',
+        ),
+        _i2.RouteConfig(
+          ShopsAndBrandsRoute.name,
+          path: '/shops-and-brand-page',
+        ),
+        _i2.RouteConfig(
+          CardRoute.name,
+          path: '/card-page',
+        ),
+        _i2.RouteConfig(
+          AddCardRoute.name,
+          path: '/add-card-page',
+        ),
+        _i2.RouteConfig(
+          CardConfirmationRoute.name,
+          path: '/card-confirmation-page',
+        ),
+        _i2.RouteConfig(
+          AddCardSuccessRoute.name,
+          path: '/add-card-success-page',
         ),
       ];
 }
@@ -1369,6 +1443,88 @@ class LooksRoute extends _i2.PageRouteInfo<void> {
         );
 
   static const String name = 'LooksRoute';
+}
+
+/// generated route for
+/// [_i1.ShopsAndBrandsPage]
+class ShopsAndBrandsRoute extends _i2.PageRouteInfo<ShopsAndBrandsRouteArgs> {
+  ShopsAndBrandsRoute({
+    _i4.Key? key,
+    required String shopName,
+  }) : super(
+          ShopsAndBrandsRoute.name,
+          path: '/shops-and-brand-page',
+          args: ShopsAndBrandsRouteArgs(
+            key: key,
+            shopName: shopName,
+          ),
+        );
+
+  static const String name = 'ShopsAndBrandsRoute';
+}
+
+class ShopsAndBrandsRouteArgs {
+  const ShopsAndBrandsRouteArgs({
+    this.key,
+    required this.shopName,
+  });
+
+  final _i4.Key? key;
+
+  final String shopName;
+
+  @override
+  String toString() {
+    return 'ShopsAndBrandsRouteArgs{key: $key, shopName: $shopName}';
+  }
+}
+
+/// generated route for
+/// [_i1.CardPage]
+class CardRoute extends _i2.PageRouteInfo<void> {
+  const CardRoute()
+      : super(
+          CardRoute.name,
+          path: '/card-page',
+        );
+
+  static const String name = 'CardRoute';
+}
+
+/// generated route for
+/// [_i1.AddCardPage]
+class AddCardRoute extends _i2.PageRouteInfo<void> {
+  const AddCardRoute()
+      : super(
+          AddCardRoute.name,
+          path: '/add-card-page',
+        );
+
+  static const String name = 'AddCardRoute';
+}
+
+/// generated route for
+/// [_i1.CardConfirmationPage]
+class CardConfirmationRoute extends _i2.PageRouteInfo<void> {
+  const CardConfirmationRoute()
+      : super(
+          CardConfirmationRoute.name,
+          path: '/card-confirmation-page',
+        );
+
+  static const String name = 'CardConfirmationRoute';
+}
+
+/// generated route for
+/// [_i1.AddCardSuccessPage]
+class AddCardSuccessRoute extends _i2.PageRouteInfo<void> {
+  const AddCardSuccessRoute()
+      : super(
+          AddCardSuccessRoute.name,
+          path: '/add-card-success-page',
+        );
+
+  static const String name = 'AddCardSuccessRoute';
 }
 
 /// generated route for

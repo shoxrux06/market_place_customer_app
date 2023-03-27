@@ -19,8 +19,7 @@ class OrderNotifier extends StateNotifier<OrderState> {
   Future<void> fetchShops(BuildContext context, List<ShopData> shops) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
-      final List<SettingsData> settings =
-          LocalStorage.instance.getSettingsList();
+      final List<SettingsData> settings = LocalStorage.instance.getSettingsList();
       bool isDelivery = false;
       for (final setting in settings) {
         if (setting.key == 'delivery') {

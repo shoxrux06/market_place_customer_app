@@ -317,8 +317,7 @@ class AppHelpers {
   }
 
   static String getTranslation(String trKey) {
-    final Map<String, dynamic> translations =
-        LocalStorage.instance.getTranslations();
+    final Map<String, dynamic> translations = LocalStorage.instance.getTranslations();
     for (final key in translations.keys) {
       if (trKey == key) {
         return translations[key];

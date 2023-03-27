@@ -25,6 +25,7 @@ void main() async {
   );
   Stripe.publishableKey = stripePublishableKey;
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await FirebaseMessaging.instance.requestPermission();
   runApp(ProviderScope(child: AppWidget()));
 }
 

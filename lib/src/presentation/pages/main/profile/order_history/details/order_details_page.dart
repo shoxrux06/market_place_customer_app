@@ -99,8 +99,7 @@ class _OrderDetailsPageState extends ConsumerState<OrderDetailsPage> {
                         fontWeight: FontWeight.w500,
                         fontSize: 12.sp,
                         letterSpacing: -0.4,
-                        color:
-                            isDarkMode ? AppColors.white : AppColors.reviewText,
+                        color: isDarkMode ? AppColors.white : AppColors.reviewText,
                       ),
                     ),
                     12.horizontalSpace,
@@ -193,10 +192,6 @@ class _OrderDetailsPageState extends ConsumerState<OrderDetailsPage> {
                   title: AppHelpers.getTranslation(TrKeys.leaveFeedback),
                   onPressed: state.canLeaveFeedback
                       ? () {
-                          // showCupertinoModalBottomSheet(
-                          //   context: context,
-                          //   builder: (context) => const OrderReviewModal(),
-                          // );
                           showModalBottomSheet(
                             context: context,
                             builder: (context) => const OrderReviewModal(),

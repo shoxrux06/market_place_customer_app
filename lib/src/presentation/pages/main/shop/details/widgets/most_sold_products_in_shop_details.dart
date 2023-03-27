@@ -27,7 +27,7 @@ class MostSoldProductsInShopDetails extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          18.verticalSpace,
+          1.verticalSpace,
           Padding(
             padding: REdgeInsets.symmetric(horizontal: 15),
             child: Row(
@@ -43,7 +43,7 @@ class MostSoldProductsInShopDetails extends ConsumerWidget {
                   ),
                 ),
                 ForgotTextButton(
-                  title: AppHelpers.getTranslation(TrKeys.seeAll),
+                  title: AppHelpers.getTranslation(TrKeys.seeAll).toUpperCase(),
                   fontSize: 12.sp,
                   fontColor: isDarkMode ? AppColors.white : AppColors.black,
                   onPressed: onSeeAllPressed,

@@ -63,7 +63,7 @@ class LooksInShopDetails extends ConsumerWidget {
                             ),
                           ),
                           ForgotTextButton(
-                            title: AppHelpers.getTranslation(TrKeys.seeAll),
+                            title: AppHelpers.getTranslation(TrKeys.seeAll).toUpperCase(),
                             fontSize: 12.sp,
                             fontColor:
                                 isDarkMode ? AppColors.white : AppColors.black,

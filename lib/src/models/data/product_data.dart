@@ -789,6 +789,11 @@ class Stocks {
     }
     return map;
   }
+
+  @override
+  String toString() {
+    return 'Stocks{_id: $_id, _countableId: $_countableId, _price: $_price, _quantity: $_quantity, _discount: $_discount, _tax: $_tax, _totalPrice: $_totalPrice, _extras: $_extras, _product: $_product}';
+  }
 }
 
 class Extras {

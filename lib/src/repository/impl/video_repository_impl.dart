@@ -16,18 +16,23 @@ import 'package:http/http.dart' as http;
 class VideoRepositoryImpl extends VideoRepository {
   @override
   Future<ApiResult<VideoResponse>> createVideo({
-    required String userId,
+    required int userId,
     required File name,
+    required File banner,
     required String description,
   }) async {
+    String fileName = banner.path.split('/').last;
     var formData = FormData.fromMap(
       {
         'user_id': userId,
         'description': description,
+        'banner': await MultipartFile.fromFile(
+          banner.path,
+          filename: fileName,
+        ),
         'name': await MultipartFile.fromFile(
           name.path,
           filename: 'video.mp4',
-          // contentType: MediaType.parse('application/json'),
         ),
       },
     );
@@ -52,28 +57,14 @@ class VideoRepositoryImpl extends VideoRepository {
   @override
   Future<ApiResult<VideoListResponse>> getVideoList() async {
     try {
-      final client = inject<HttpService>().client(requireAuth: true);
+      final client = inject<HttpService>().client(requireAuth: false);
       final response = await client.get(
-        '/api/v1/dashboard/user/importVideo',
+        '/api/allVideo',
       );
+      print('==> response.data ${response.data}');
+      print('==> response status code ${response.statusCode}');
       return ApiResult.success(
         data: VideoListResponse.fromJson(response.data),
-      );
-    } catch (e) {
-      print('==> get video List failure: $e');
-      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-    }
-  }
-
-  @override
-  Future<ApiResult<UserResponse>> getUsers() async{
-    try {
-      // final client = inject<HttpService>().client(requireAuth: true);
-      final response = await http.get(
-        Uri.parse('https://jsonplaceholder.typicode.com/posts')
-      );
-      return ApiResult.success(
-        data: UserResponse.fromJson(response.body),
       );
     } catch (e) {
       print('==> get video List failure: $e');

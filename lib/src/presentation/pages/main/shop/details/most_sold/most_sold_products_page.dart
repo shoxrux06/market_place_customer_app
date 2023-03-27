@@ -70,11 +70,6 @@ class _MostSoldProductsPageState extends ConsumerState<MostSoldProductsPage> {
                   size: 18.r,
                 ),
                 onPressed: () {
-                  // showCupertinoModalBottomSheet(
-                  //   context: context,
-                  //   builder: (context) =>
-                  //       const MostSoldProductsSearchFilterModal(),
-                  // );
                   AppHelpers.showCustomModalBottomSheet(
                     context: context,
                     modal: const MostSoldProductsSearchFilterModal(),

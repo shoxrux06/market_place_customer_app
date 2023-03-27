@@ -1,8 +1,9 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:g_customer/src/presentation/pages/main/shop/details/widgets/video_list_products.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../core/constants/constants.dart';
@@ -16,6 +17,7 @@ import '../../home/shops_loadin_shimmer_footer.dart';
 import '../../profile/add_video/riverpod/provider/add_video_provider.dart';
 import '../../profile/add_video/widgets/video_widget.dart';
 import '../../view_map/riverpod/provider/view_map_provider.dart';
+import '../order/checkout/riverpod/provider/checkout_provider.dart';
 import 'brands/riverpod/provider/brands_provider.dart';
 import 'riverpod/provider/shop_details_provider.dart';
 import 'widgets/discount_products_in_shop_details.dart';
@@ -39,6 +41,11 @@ class _ShopDetailsPageState extends ConsumerState<ShopDetailsPage>
     Future.delayed(
       Duration.zero,
       () {
+        final notifierTwo = ref.watch(checkoutProvider.notifier);
+        notifierTwo.getToken(context);
+        print('getCardToken <<${LocalStorage.instance.getCardToken()}>>');
+
+        ref.watch(viewMapProvider.notifier).fetchShops(context);
         notifier.fetchBanners(
           checkYourNetwork: () {
             AppHelpers.showCheckFlash(
@@ -78,26 +85,9 @@ class _ShopDetailsPageState extends ConsumerState<ShopDetailsPage>
 
   @override
   Widget build(BuildContext context) {
-
-    List<ShopData> shopListRec = [];
-    List<ShopData> shopList = [];
-
     final bool isDarkMode = ref.watch(appProvider).isDarkMode;
     final state = ref.watch(shopDetailsProvider);
-
-    ref.watch(viewMapProvider.notifier).fetchShops(context);
     final stateShops = ref.watch(viewMapProvider);
-
-    stateShops.shops.map((shop) {
-      if(shop.mark == 'recommended'){
-        shopListRec.add(shop);
-      }
-      if(shop.mark == ''){
-        shopList.add(shop);
-      }
-    });
-
-    final stateBrands = ref.watch(brandsProvider);
 
     return KeyboardDismisser(
       child: Scaffold(
@@ -114,81 +104,82 @@ class _ShopDetailsPageState extends ConsumerState<ShopDetailsPage>
                       searchedProducts: state.searchedProducts,
                       query: state.query.trim(),
                     )
-                  : SingleChildScrollView(
-                      physics: const CustomBouncingScrollPhysics(),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          1.verticalSpace,
-                          const ShopListBanners(),
-                          1.verticalSpace,
-                          Row(
-                            children: [
-                              12.horizontalSpace,
-                              Expanded(
-                                child: OftenBuyButton(
-                                  icAsset: AppAssets.svgIcOftenBuy,
-                                  onTap: () => context
-                                      .pushRoute(const OftenBuyProductsRoute()),
-                                  title: AppHelpers.getTranslation(
-                                      TrKeys.famousText),
-                                ),
+                  : CustomScrollView(
+                slivers: [
+                  SliverList(delegate: SliverChildListDelegate([
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        1.verticalSpace,
+                        const ShopListBanners(),
+                        1.verticalSpace,
+                        Row(
+                          children: [
+                            12.horizontalSpace,
+                            Expanded(
+                              child: OftenBuyButton(
+                                icAsset: AppAssets.svgIcOftenBuy,
+                                onTap: () => context
+                                    .pushRoute(const OftenBuyProductsRoute()),
+                                title: AppHelpers.getTranslation(
+                                    TrKeys.famousText),
                               ),
-                              4.horizontalSpace,
-                              Expanded(
-                                child: OftenBuyButton(
-                                  icAsset: AppAssets.svgIcProfitable,
-                                  onTap: () => context.pushRoute(
-                                      const ProfitableProductsRoute()),
-                                  title: AppHelpers.getTranslation(
-                                      TrKeys.newProductsText),
-                                ),
+                            ),
+                            4.horizontalSpace,
+                            Expanded(
+                              child: OftenBuyButton(
+                                icAsset: AppAssets.svgIcProfitable,
+                                onTap: () => context.pushRoute(
+                                    const ProfitableProductsRoute()),
+                                title: AppHelpers.getTranslation(
+                                    TrKeys.newProductsText),
                               ),
-                              4.horizontalSpace,
-                              Expanded(
-                                child: OftenBuyButton(
-                                  icAsset: AppAssets.svgIcProfitable,
-                                  onTap: () => context.pushRoute(
-                                      const ProfitableProductsRoute()),
-                                  title: AppHelpers.getTranslation(
-                                      TrKeys.discountText),
-                                ),
+                            ),
+                            4.horizontalSpace,
+                            Expanded(
+                              child: OftenBuyButton(
+                                icAsset: AppAssets.svgIcProfitable,
+                                onTap: () => context.pushRoute(
+                                    const ProfitableProductsRoute()),
+                                title: AppHelpers.getTranslation(
+                                    TrKeys.discountText),
                               ),
-                              12.horizontalSpace,
-                            ],
-                          ),
-                          15.verticalSpace,
-                          Row(
-                            children: [
-                              12.horizontalSpace,
-                              Expanded(
-                                child: Container(
-                                  padding: const EdgeInsets.all(4),
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          Color(0xFFB537F0),
-                                          Color(0xFFF24A4A),
-                                        ]
-                                    ),
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Special products for you',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.white,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
+                            ),
+                            12.horizontalSpace,
+                          ],
+                        ),
+                        12.verticalSpace,
+                        Row(
+                          children: [
+                            12.horizontalSpace,
+                            Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.all(4),
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xFFB537F0),
+                                        Color(0xFFF24A4A),
+                                      ]
                                   ),
                                 ),
+                                child: Center(
+                                  child: Text(
+                                    AppHelpers.getTranslation(TrKeys.specialProductsForYou),
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ),
-                              8.horizontalSpace,
-                              Expanded(
+                            ),
+                            8.horizontalSpace,
+                            Expanded(
                                 child: InkWell(
                                   onTap:()=> context.pushRoute(const DiscountProductsRoute()),
                                   child: Container(
@@ -196,17 +187,16 @@ class _ShopDetailsPageState extends ConsumerState<ShopDetailsPage>
                                     height: 60,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                           colors: [
                                             Color(0xFFB537F0),
                                             Color(0xFFF24A4A),
                                           ]
                                       ),
                                     ),
-                                    child: const Center(
+                                    child: Center(
                                       child: Text(
-                                        '12:28:05'
-                                            ' Flash discounts',
+                                        AppHelpers.getTranslation(TrKeys.flashDiscounts),
                                         style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.w900,
@@ -217,44 +207,29 @@ class _ShopDetailsPageState extends ConsumerState<ShopDetailsPage>
                                     ),
                                   ),
                                 )
-                              ),
-                              12.horizontalSpace,
-                            ],
-                          ),
-                          ListView.builder(
-                            itemCount: state.categories.length,
-                            shrinkWrap: true,
-                            primary: false,
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.zero,
-                            itemBuilder: (context, index) {
-                              final category = state.categories[index];
-                              if ((category.children?.length ?? 0) > 1) {
-                                return MainCategoryItem(category: category);
-                              }
-                              return const SizedBox();
-                            },
-                          ),
-                          16.verticalSpace,
-                          DiscountProductsInShopDetails(
-                            onSeeAllPressed: () => context
-                                .pushRoute(const DiscountProductsRoute()),
-                          ),
-                          15.verticalSpace,
-                          MostSoldProductsInShopDetails(
-                            onSeeAllPressed: () => context
-                                .pushRoute(const MostSoldProductsRoute()),
-                          ),
-                          12.verticalSpace,
-                          const VideoWidget(),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: const CustomBouncingScrollPhysics(),
-                            itemCount: stateShops.shops.length,
-                            itemBuilder: (context, index) {
-                              final ShopData shop = stateShops.shops[index];
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 15),
+                            ),
+                            12.horizontalSpace,
+                          ],
+                        ),
+                        2.verticalSpace,
+                        DiscountProductsInShopDetails(
+                          onSeeAllPressed: () => context
+                              .pushRoute(const DiscountProductsRoute()),
+                        ),
+                        2.verticalSpace,
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const CustomBouncingScrollPhysics(),
+                          itemCount: stateShops.shops.length,
+                          itemBuilder: (context, index) {
+                            final ShopData shop = stateShops.shops[index];
+                            return InkWell(
+                              onTap: () {
+                                context.pushRoute(ShopsAndBrandsRoute(shopName: shop.translation?.title.toString()??''));
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 15,),
+                                margin: EdgeInsets.only(bottom:index != (stateShops.shops.length - 1)?12:0, top: 20),
                                 child: Stack(
                                   children: [
                                     Container(
@@ -274,16 +249,43 @@ class _ShopDetailsPageState extends ConsumerState<ShopDetailsPage>
                                           fontSize: 18.sp,
                                           color: isDarkMode ? AppColors.white : AppColors.black,
                                           letterSpacing: -0.4,
-                                        ),)),
+                                        ),)
+                                    ),
                                   ],
                                 ),
-                              );
+                              ),
+                            );
+                          },
+                        ),
+                        MostSoldProductsInShopDetails(
+                          onSeeAllPressed: () => context
+                              .pushRoute(const MostSoldProductsRoute()),
+                        ),
+                        const VideoWidget(),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom:  Platform.isAndroid ? 72.r : 97.r,
+                          ),
+                          child: ListView.builder(
+                            itemCount: state.categories.length,
+                            shrinkWrap: true,
+                            primary: false,
+                            physics: const NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.zero,
+                            itemBuilder: (context, index) {
+                              final category = state.categories[index];
+                              if ((category.children?.length ?? 0) > 1) {
+                                return MainCategoryItem(category: category);
+                              }
+                              return const SizedBox();
                             },
                           ),
-                          12.verticalSpace,
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
+                  ]))
+                ],
+              ),
             )
           ],
         ),

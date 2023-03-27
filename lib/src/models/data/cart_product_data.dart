@@ -58,4 +58,9 @@ class CartProductData {
     }
     return map;
   }
+
+  @override
+  String toString() {
+    return 'CartProductData{_quantity: $_quantity, _imageUrl: $_imageUrl, _title: $_title, _selectedStock: $_selectedStock}';
+  }
 }

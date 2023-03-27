@@ -44,3 +44,9 @@ export 'main/shop_list/often_buy/often_buy_products_page.dart';
 export 'main/shop_list/profitable/profitable_products_page.dart';
 export 'main/shop/details/looks/looks_page.dart';
 export 'main/profile/add_address/add_address_page.dart';
+export 'main/shop_list/shops_and_brands/shops_and_brands_page.dart';
+export 'main/profile/card/cart_page.dart';
+export 'main/profile/card/add_card_page.dart';
+export 'main/profile/card/card_confirmation_page.dart';
+export 'main/profile/card/add_card_success_page.dart';
+

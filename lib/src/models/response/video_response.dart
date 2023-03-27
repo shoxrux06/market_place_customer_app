@@ -14,7 +14,7 @@ class VideoResponse {
     required this.message,
   });
 
-  String status;
+  bool status;
   String message;
 
   factory VideoResponse.fromJson(Map<String, dynamic> json) => VideoResponse(

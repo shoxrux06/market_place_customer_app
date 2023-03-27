@@ -74,14 +74,23 @@ class LocalStorage {
 
   void deleteToken() => _preferences?.remove(AppConstants.keyToken);
 
+  Future<void> setCardToken(String? token) async {
+    if (_preferences != null) {
+      await _preferences!.setString(AppConstants.cardToken, token ?? '');
+    }
+  }
+
+  String getCardToken() => _preferences?.getString(AppConstants.cardToken) ?? '';
+
+  void deleteCardToken() => _preferences?.remove(AppConstants.cardToken);
+
   Future<void> setFirstName(String? name) async {
     if (_preferences != null) {
       await _preferences!.setString(AppConstants.keyFirstName, name ?? '');
     }
   }
 
-  String getFirstName() =>
-      _preferences?.getString(AppConstants.keyFirstName) ?? '';
+  String getFirstName() => _preferences?.getString(AppConstants.keyFirstName) ?? '';
 
   void deleteFirstName() => _preferences?.remove(AppConstants.keyFirstName);
 

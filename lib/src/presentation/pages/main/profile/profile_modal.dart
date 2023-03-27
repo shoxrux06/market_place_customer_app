@@ -164,69 +164,74 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                       ),
                       16.horizontalSpace,
                       Expanded(
-                        child: Container(
-                          height: 50.r,
-                          decoration: BoxDecoration(
-                            color: isDarkMode
-                                ? AppColors.dontHaveAnAccBackDark
-                                : AppColors.dontHaveAccBtnBack,
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                          alignment: Alignment.center,
-                          padding: REdgeInsets.symmetric(horizontal: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    FlutterRemix.wallet_3_line,
-                                    size: 18.r,
-                                    color: isDarkMode
-                                        ? AppColors.white
-                                        : AppColors.black,
-                                  ),
-                                  10.horizontalSpace,
-                                  Text(
-                                    LocalStorage.instance
-                                                .getWalletData()
-                                                ?.price !=
-                                            null
-                                        ? intl.NumberFormat.currency(
-                                            symbol: LocalStorage.instance
-                                                .getSelectedCurrency()
-                                                .symbol,
-                                          ).format(
-                                            LocalStorage.instance
-                                                .getWalletData()
-                                                ?.price,
-                                          )
-                                        : AppHelpers.getTranslation(
-                                            TrKeys.noWallet),
-                                    style: GoogleFonts.k2d(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 13.sp,
+                        child: InkWell(
+                          onTap: (){
+                            context.router.push(const CardRoute());
+                          },
+                          child: Container(
+                            height: 50.r,
+                            decoration: BoxDecoration(
+                              color: isDarkMode
+                                  ? AppColors.dontHaveAnAccBackDark
+                                  : AppColors.dontHaveAccBtnBack,
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            alignment: Alignment.center,
+                            padding: REdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      FlutterRemix.wallet_3_line,
+                                      size: 18.r,
                                       color: isDarkMode
                                           ? AppColors.white
                                           : AppColors.black,
                                     ),
-                                  ),
-                                  7.horizontalSpace,
-                                  Icon(
-                                    FlutterRemix.link,
-                                    size: 18.r,
-                                    color: isDarkMode
-                                        ? AppColors.white
-                                        : AppColors.black,
-                                  ),
-                                ],
-                              ),
-                              Icon(
-                                FlutterRemix.add_circle_fill,
-                                size: 20.r,
-                                color: AppColors.accentGreen,
-                              ),
-                            ],
+                                    10.horizontalSpace,
+                                    Text(
+                                      LocalStorage.instance
+                                                  .getWalletData()
+                                                  ?.price !=
+                                              null
+                                          ? intl.NumberFormat.currency(
+                                              symbol: LocalStorage.instance
+                                                  .getSelectedCurrency()
+                                                  .symbol,
+                                            ).format(
+                                              LocalStorage.instance
+                                                  .getWalletData()
+                                                  ?.price,
+                                            )
+                                          : AppHelpers.getTranslation(
+                                              TrKeys.noWallet),
+                                      style: GoogleFonts.k2d(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13.sp,
+                                        color: isDarkMode
+                                            ? AppColors.white
+                                            : AppColors.black,
+                                      ),
+                                    ),
+                                    7.horizontalSpace,
+                                    Icon(
+                                      FlutterRemix.link,
+                                      size: 18.r,
+                                      color: isDarkMode
+                                          ? AppColors.white
+                                          : AppColors.black,
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  FlutterRemix.add_circle_fill,
+                                  size: 20.r,
+                                  color: AppColors.accentGreen,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

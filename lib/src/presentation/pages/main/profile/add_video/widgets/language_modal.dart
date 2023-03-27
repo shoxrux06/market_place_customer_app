@@ -3,11 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_customer/src/presentation/components/blur_loading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../../../core/constants/constants.dart';
 import '../../../../../../core/utils/app_helpers.dart';
 import '../../../../../../core/utils/local_storage.dart';
+import '../../../../../components/components.dart';
 import '../../../../../theme/app_colors.dart';
 import 'package:video_compress/video_compress.dart';
 
@@ -24,45 +26,37 @@ class LanguageModal extends ConsumerStatefulWidget {
 
 class _LanguageModalState extends ConsumerState<LanguageModal> {
 
-  Future<void> baseFunc({required ImageSource source}) async {
-    XFile? theVideo = await ImagePicker().pickVideo(source: source);
-
-    File? inFile;
-
-    inFile = File(theVideo?.path ?? '');
-
-    if(theVideo != null) {
-      Navigator.of(context).pop();
-      AppHelpers.showCustomModalBottomSheetVideo(
-        context: context,
-        modal: AddVideoPage(videoFile: inFile,),
-        isDarkMode: false,
-      );
-    }
-  }
-
-  getFromCamera() async {
-    await baseFunc(source: ImageSource.camera);
-  }
-
-  getFromGallery() async {
-    await baseFunc(source: ImageSource.gallery);
-  }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(addVideoProvider);
+    final  state = ref.watch(addVideoProvider);
+    final notifier = ref.watch(addVideoProvider.notifier);
     final bool isDarkMode = LocalStorage.instance.getAppThemeMode();
-    if(state.isCompressingVideo){
-      print('Compressed ***');
-      Navigator.of(context).pop();
-    }
+
     final bool isLtr = LocalStorage.instance.getLangLtr();
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: Padding(
         padding: REdgeInsets.symmetric(horizontal: 15),
-        child: Column(
+        child: state.isCompressingVideo?Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            JumpingDots(
+              color: isDarkMode ? AppColors.white : AppColors.black,
+            ),
+            SizedBox(height: 12,),
+            Text(
+              AppHelpers.getTranslation(TrKeys.pleaseWaitVideoIsComp),
+              textAlign: TextAlign.center,
+              style: GoogleFonts.k2d(
+                fontWeight: FontWeight.w500,
+                fontSize: 18.sp,
+                color: isDarkMode ? AppColors.white : AppColors.black,
+                letterSpacing: -14 * 0.03,
+              ),
+            ),
+          ],
+        )):Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             11.verticalSpace,
@@ -77,15 +71,17 @@ class _LanguageModalState extends ConsumerState<LanguageModal> {
             ),
             16.verticalSpace,
             TextButton(
-              style: ButtonStyle(
+              style: ButtonStyle  (
                 overlayColor: MaterialStateColor.resolveWith(
                       (states) => isDarkMode
                       ? AppColors.mainBackDark
                       : AppColors.dontHaveAccBtnBack,
                 ),
               ),
-              onPressed: () async {
-                getFromCamera();
+              onPressed: () {
+                notifier.getFromCamera(context);
+                if(!mounted) return;
+                print('videoFile in modal --> ${state.videoFile}');
               },
               child: Row(
                 children: [
@@ -115,8 +111,10 @@ class _LanguageModalState extends ConsumerState<LanguageModal> {
                       : AppColors.dontHaveAccBtnBack,
                 ),
               ),
-              onPressed: () {
-                getFromGallery();
+              onPressed: (){
+                notifier.getFromGallery(context);
+                if(!mounted) return;
+                print('videoFile in modal --> ${state.videoFile}');
               },
               child: Row(
                 children: [

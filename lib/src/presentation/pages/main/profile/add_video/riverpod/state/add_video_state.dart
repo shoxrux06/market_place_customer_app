@@ -10,13 +10,16 @@ part 'add_video_state.freezed.dart';
 @freezed
 abstract class AddVideoState with _$AddVideoState {
 
+  const AddVideoState._();
+
   const factory AddVideoState({
     required MediaInfo? mediaInfo,
     @Default([]) List<Video> videoList,
+    @Default(false) bool isFetchingVideo,
     @Default(false) bool isCompressingVideo,
     @Default(false) bool isUploadingVideo,
     required  File? videoFile,
+    required  File? imageFile,
 }) = _AddVideoState;
 
-   const AddVideoState._();
 }

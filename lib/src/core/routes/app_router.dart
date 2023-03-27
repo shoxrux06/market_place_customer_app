@@ -4,7 +4,7 @@ import '../../presentation/pages/pages.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
-  routes: [
+  routes:  [
     CustomRoute(
       path: '/',
       page: SplashPage,
@@ -276,6 +276,37 @@ import '../../presentation/pages/pages.dart';
       transitionsBuilder: TransitionsBuilders.slideLeft,
       durationInMilliseconds: 300,
     ),
+    CustomRoute(
+      path: '/shops-and-brand-page',
+      page: ShopsAndBrandsPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/card-page',
+      page: CardPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/add-card-page',
+      page: AddCardPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/card-confirmation-page',
+      page: CardConfirmationPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
+    CustomRoute(
+      path: '/add-card-success-page',
+      page: AddCardSuccessPage,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+      durationInMilliseconds: 300,
+    ),
   ],
+
 )
 class $AppRouter {}

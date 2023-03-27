@@ -172,6 +172,8 @@ class ProductsRepositoryImpl extends ProductsRepository {
   Future<ApiResult<ProductCalculateResponse>> getAllCalculations(
     List<CartProductData> cartProducts,
   ) async {
+    print('getSelectedCurrency --> <<${LocalStorage.instance.getSelectedCurrency().id}>>');
+    print('cartProducts --> <<$cartProducts>>');
     final data = {
       'currency_id': LocalStorage.instance.getSelectedCurrency().id,
     };
