@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RegisterState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isDeletingAccount => throw _privateConstructorUsedError;
   bool get isGoogleLoading => throw _privateConstructorUsedError;
   bool get showPassword => throw _privateConstructorUsedError;
   bool get showConfirmPassword => throw _privateConstructorUsedError;
@@ -24,6 +25,7 @@ mixin _$RegisterState {
   bool get isPasswordInvalid => throw _privateConstructorUsedError;
   bool get isConfirmPasswordInvalid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get deleteMessage => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
@@ -41,6 +43,7 @@ abstract class $RegisterStateCopyWith<$Res> {
       _$RegisterStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
+      bool isDeletingAccount,
       bool isGoogleLoading,
       bool showPassword,
       bool showConfirmPassword,
@@ -48,6 +51,7 @@ abstract class $RegisterStateCopyWith<$Res> {
       bool isPasswordInvalid,
       bool isConfirmPasswordInvalid,
       String email,
+      String deleteMessage,
       String firstName,
       String lastName,
       String password,
@@ -66,6 +70,7 @@ class _$RegisterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isDeletingAccount = freezed,
     Object? isGoogleLoading = freezed,
     Object? showPassword = freezed,
     Object? showConfirmPassword = freezed,
@@ -73,6 +78,7 @@ class _$RegisterStateCopyWithImpl<$Res>
     Object? isPasswordInvalid = freezed,
     Object? isConfirmPasswordInvalid = freezed,
     Object? email = freezed,
+    Object? deleteMessage = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? password = freezed,
@@ -82,6 +88,10 @@ class _$RegisterStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeletingAccount: isDeletingAccount == freezed
+          ? _value.isDeletingAccount
+          : isDeletingAccount // ignore: cast_nullable_to_non_nullable
               as bool,
       isGoogleLoading: isGoogleLoading == freezed
           ? _value.isGoogleLoading
@@ -110,6 +120,10 @@ class _$RegisterStateCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      deleteMessage: deleteMessage == freezed
+          ? _value.deleteMessage
+          : deleteMessage // ignore: cast_nullable_to_non_nullable
               as String,
       firstName: firstName == freezed
           ? _value.firstName
@@ -140,6 +154,7 @@ abstract class _$$_RegisterStateCopyWith<$Res>
   @override
   $Res call(
       {bool isLoading,
+      bool isDeletingAccount,
       bool isGoogleLoading,
       bool showPassword,
       bool showConfirmPassword,
@@ -147,6 +162,7 @@ abstract class _$$_RegisterStateCopyWith<$Res>
       bool isPasswordInvalid,
       bool isConfirmPasswordInvalid,
       String email,
+      String deleteMessage,
       String firstName,
       String lastName,
       String password,
@@ -167,6 +183,7 @@ class __$$_RegisterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isDeletingAccount = freezed,
     Object? isGoogleLoading = freezed,
     Object? showPassword = freezed,
     Object? showConfirmPassword = freezed,
@@ -174,6 +191,7 @@ class __$$_RegisterStateCopyWithImpl<$Res>
     Object? isPasswordInvalid = freezed,
     Object? isConfirmPasswordInvalid = freezed,
     Object? email = freezed,
+    Object? deleteMessage = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? password = freezed,
@@ -183,6 +201,10 @@ class __$$_RegisterStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeletingAccount: isDeletingAccount == freezed
+          ? _value.isDeletingAccount
+          : isDeletingAccount // ignore: cast_nullable_to_non_nullable
               as bool,
       isGoogleLoading: isGoogleLoading == freezed
           ? _value.isGoogleLoading
@@ -212,6 +234,10 @@ class __$$_RegisterStateCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      deleteMessage: deleteMessage == freezed
+          ? _value.deleteMessage
+          : deleteMessage // ignore: cast_nullable_to_non_nullable
+              as String,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -237,6 +263,7 @@ class __$$_RegisterStateCopyWithImpl<$Res>
 class _$_RegisterState extends _RegisterState {
   const _$_RegisterState(
       {this.isLoading = false,
+      this.isDeletingAccount = false,
       this.isGoogleLoading = false,
       this.showPassword = false,
       this.showConfirmPassword = false,
@@ -244,6 +271,7 @@ class _$_RegisterState extends _RegisterState {
       this.isPasswordInvalid = false,
       this.isConfirmPasswordInvalid = false,
       this.email = '',
+      this.deleteMessage = '',
       this.firstName = '',
       this.lastName = '',
       this.password = '',
@@ -253,6 +281,9 @@ class _$_RegisterState extends _RegisterState {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isDeletingAccount;
   @override
   @JsonKey()
   final bool isGoogleLoading;
@@ -276,6 +307,9 @@ class _$_RegisterState extends _RegisterState {
   final String email;
   @override
   @JsonKey()
+  final String deleteMessage;
+  @override
+  @JsonKey()
   final String firstName;
   @override
   @JsonKey()
@@ -289,7 +323,7 @@ class _$_RegisterState extends _RegisterState {
 
   @override
   String toString() {
-    return 'RegisterState(isLoading: $isLoading, isGoogleLoading: $isGoogleLoading, showPassword: $showPassword, showConfirmPassword: $showConfirmPassword, isEmailInvalid: $isEmailInvalid, isPasswordInvalid: $isPasswordInvalid, isConfirmPasswordInvalid: $isConfirmPasswordInvalid, email: $email, firstName: $firstName, lastName: $lastName, password: $password, confirmPassword: $confirmPassword)';
+    return 'RegisterState(isLoading: $isLoading, isDeletingAccount: $isDeletingAccount, isGoogleLoading: $isGoogleLoading, showPassword: $showPassword, showConfirmPassword: $showConfirmPassword, isEmailInvalid: $isEmailInvalid, isPasswordInvalid: $isPasswordInvalid, isConfirmPasswordInvalid: $isConfirmPasswordInvalid, email: $email, deleteMessage: $deleteMessage, firstName: $firstName, lastName: $lastName, password: $password, confirmPassword: $confirmPassword)';
   }
 
   @override
@@ -298,6 +332,8 @@ class _$_RegisterState extends _RegisterState {
         (other.runtimeType == runtimeType &&
             other is _$_RegisterState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other.isDeletingAccount, isDeletingAccount) &&
             const DeepCollectionEquality()
                 .equals(other.isGoogleLoading, isGoogleLoading) &&
             const DeepCollectionEquality()
@@ -311,6 +347,8 @@ class _$_RegisterState extends _RegisterState {
             const DeepCollectionEquality().equals(
                 other.isConfirmPasswordInvalid, isConfirmPasswordInvalid) &&
             const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality()
+                .equals(other.deleteMessage, deleteMessage) &&
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
             const DeepCollectionEquality().equals(other.password, password) &&
@@ -322,6 +360,7 @@ class _$_RegisterState extends _RegisterState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isDeletingAccount),
       const DeepCollectionEquality().hash(isGoogleLoading),
       const DeepCollectionEquality().hash(showPassword),
       const DeepCollectionEquality().hash(showConfirmPassword),
@@ -329,6 +368,7 @@ class _$_RegisterState extends _RegisterState {
       const DeepCollectionEquality().hash(isPasswordInvalid),
       const DeepCollectionEquality().hash(isConfirmPasswordInvalid),
       const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(deleteMessage),
       const DeepCollectionEquality().hash(firstName),
       const DeepCollectionEquality().hash(lastName),
       const DeepCollectionEquality().hash(password),
@@ -343,6 +383,7 @@ class _$_RegisterState extends _RegisterState {
 abstract class _RegisterState extends RegisterState {
   const factory _RegisterState(
       {final bool isLoading,
+      final bool isDeletingAccount,
       final bool isGoogleLoading,
       final bool showPassword,
       final bool showConfirmPassword,
@@ -350,6 +391,7 @@ abstract class _RegisterState extends RegisterState {
       final bool isPasswordInvalid,
       final bool isConfirmPasswordInvalid,
       final String email,
+      final String deleteMessage,
       final String firstName,
       final String lastName,
       final String password,
@@ -358,6 +400,8 @@ abstract class _RegisterState extends RegisterState {
 
   @override
   bool get isLoading;
+  @override
+  bool get isDeletingAccount;
   @override
   bool get isGoogleLoading;
   @override
@@ -372,6 +416,8 @@ abstract class _RegisterState extends RegisterState {
   bool get isConfirmPasswordInvalid;
   @override
   String get email;
+  @override
+  String get deleteMessage;
   @override
   String get firstName;
   @override

@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 class MaskedTextController extends TextEditingController {
-  MaskedTextController(
-      {String? text, required this.mask, Map<String, RegExp>? translator})
-      : super(text: text) {
+  MaskedTextController({
+    String? text,
+    required this.mask,
+    Map<String, RegExp>? translator,
+  }) : super(text: text) {
     this.translator = translator ?? MaskedTextController.getDefaultTranslator();
 
     addListener(() {

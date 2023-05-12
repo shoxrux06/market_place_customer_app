@@ -15,6 +15,7 @@ class TrKeys {
   static const String chat = 'chat';
   static const String becomeSeller = 'becomeSeller';
   static const String logout = 'logout';
+  static const String deleteAccount = 'deleteAccount';
   static const String noWallet = 'noWallet';
   static const String systemSettings = 'systemSettings';
   static const String selectLanguage = 'selectLanguage';
@@ -195,6 +196,7 @@ class TrKeys {
   static const String noTitle = 'noTitle';
   static const String errorWithConnectingToFirebase = 'errorWithConnectingToFirebase';
   static const String doYouReallyWantToLogout = 'doYouReallyWantToLogout';
+  static const String doYouReallyWantToDeleteTheAccount = 'doYouReallyWantToDeleteTheAccount';
   static const String yes = 'yes';
   static const String walletAmountIsNotEnoughForOrderCreating = 'walletAmountIsNotEnoughForOrderCreating';
   static const String errorOccurredWithPayingViaStripe = 'errorOccurredWithPayingViaStripe';
@@ -205,6 +207,7 @@ class TrKeys {
   static const String confirmPasswordIsNotTheSame = 'confirmPasswordIsNotTheSame';
   static const String errorWithUpdatingPassword = 'errorWithUpdatingPassword';
   static const String errorWithCreatingAccount = 'errorWithCreatingAccount';
+  static const String errorWithDeletingAccount = 'errorWithDeletingAccount';
   static const String famousText = 'famousText';
   static const String newProductsText = 'newProductsText';
   static const String discountText = 'discountText';

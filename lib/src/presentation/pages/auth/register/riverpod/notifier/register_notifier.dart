@@ -5,7 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../../../core/constants/constants.dart';
 import '../../../../../../core/routes/app_router.gr.dart';
@@ -105,63 +105,27 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
     }
   }
 
-  Future<void> registerWithGoogle(BuildContext context) async {
+  Future<void> deleteUserInfo(BuildContext context, String uuid) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
-      state = state.copyWith(isGoogleLoading: true);
-      GoogleSignInAccount? googleUser;
-      try {
-        googleUser = await GoogleSignIn().signIn();
-      } catch (e) {
-        state = state.copyWith(isGoogleLoading: false);
-        debugPrint('===> login with google exception: $e');
-        if (mounted) {
-          AppHelpers.showCheckFlash(
-            context,
-            AppHelpers.getTranslation(e.toString()),
-          );
-        }
-      }
-      if (googleUser == null) {
-        state = state.copyWith(isGoogleLoading: false);
-        return;
-      }
-      final response = await _authRepository.loginWithGoogle(
-        email: googleUser.email,
-        displayName: googleUser.displayName ?? '',
-        id: googleUser.id,
+      state = state.copyWith(isDeletingAccount: true);
+      final response = await _userRepository.deleteUserInfo(
+        uuid: uuid
       );
       response.when(
         success: (data) async {
-          LocalStorage.instance.setUser(data.data);
-          LocalStorage.instance.setToken(data.data?.accessToken ?? '');
-          LocalStorage.instance.setFirstName(data.data?.user?.firstname);
-          LocalStorage.instance.setLastName(data.data?.user?.lastname);
-          LocalStorage.instance.setProfileImage(data.data?.user?.img);
-          LocalStorage.instance.setAuthenticatedWithSocial(true);
-          fetchCurrencies(context);
-          final fcmToken = await FirebaseMessaging.instance.getToken();
-          _userRepository.updateFirebaseToken(fcmToken);
-          final addressResponse = await _addressRepository.getUserAddresses();
-          addressResponse.when(
-            success: (addressData) {
-              log('===> getting address data: $addressData');
-              state = state.copyWith(isGoogleLoading: false);
-              if (saveAddressesToLocal(addressData.data)) {
-                context.router.popUntilRoot();
-                context.replaceRoute(const ShopMainRoute());
-              } else {
-                context.router.popUntilRoot();
-                context.replaceRoute(AddAddressRoute(isRequired: true));
-              }
-            },
-            failure: (addressFailure) {
-              state = state.copyWith(isLoading: false);
-              debugPrint('==> address failure: $addressFailure');
-            },
-          );
+          state = state.copyWith(isDeletingAccount: false, deleteMessage: data.message);
+          context.router.popUntilRoot();
+          context.replaceRoute(const LoginRoute());
         },
-        failure: (failure) {},
+        failure: (failure) {
+          state = state.copyWith(isDeletingAccount: false,);
+          AppHelpers.showCheckFlash(
+            context,
+            AppHelpers.getTranslation(TrKeys.errorWithDeletingAccount),
+          );
+          debugPrint('==> delete User info failure: $failure');
+        },
       );
     } else {
       if (mounted) {
@@ -169,6 +133,71 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
       }
     }
   }
+
+  // Future<void> registerWithGoogle(BuildContext context) async {
+  //   final connected = await AppConnectivity.connectivity();
+  //   if (connected) {
+  //     state = state.copyWith(isGoogleLoading: true);
+  //     GoogleSignInAccount? googleUser;
+  //     try {
+  //       googleUser = await GoogleSignIn().signIn();
+  //     } catch (e) {
+  //       state = state.copyWith(isGoogleLoading: false);
+  //       debugPrint('===> login with google exception: $e');
+  //       if (mounted) {
+  //         AppHelpers.showCheckFlash(
+  //           context,
+  //           AppHelpers.getTranslation(e.toString()),
+  //         );
+  //       }
+  //     }
+  //     if (googleUser == null) {
+  //       state = state.copyWith(isGoogleLoading: false);
+  //       return;
+  //     }
+  //     final response = await _authRepository.loginWithGoogle(
+  //       email: googleUser.email,
+  //       displayName: googleUser.displayName ?? '',
+  //       id: googleUser.id,
+  //     );
+  //     response.when(
+  //       success: (data) async {
+  //         LocalStorage.instance.setUser(data.data);
+  //         LocalStorage.instance.setToken(data.data?.accessToken ?? '');
+  //         LocalStorage.instance.setFirstName(data.data?.user?.firstname);
+  //         LocalStorage.instance.setLastName(data.data?.user?.lastname);
+  //         LocalStorage.instance.setProfileImage(data.data?.user?.img);
+  //         LocalStorage.instance.setAuthenticatedWithSocial(true);
+  //         fetchCurrencies(context);
+  //         final fcmToken = await FirebaseMessaging.instance.getToken();
+  //         _userRepository.updateFirebaseToken(fcmToken);
+  //         final addressResponse = await _addressRepository.getUserAddresses();
+  //         addressResponse.when(
+  //           success: (addressData) {
+  //             log('===> getting address data: $addressData');
+  //             state = state.copyWith(isGoogleLoading: false);
+  //             if (saveAddressesToLocal(addressData.data)) {
+  //               context.router.popUntilRoot();
+  //               context.replaceRoute(const ShopMainRoute());
+  //             } else {
+  //               context.router.popUntilRoot();
+  //               context.replaceRoute(AddAddressRoute(isRequired: true));
+  //             }
+  //           },
+  //           failure: (addressFailure) {
+  //             state = state.copyWith(isLoading: false);
+  //             debugPrint('==> address failure: $addressFailure');
+  //           },
+  //         );
+  //       },
+  //       failure: (failure) {},
+  //     );
+  //   } else {
+  //     if (mounted) {
+  //       AppHelpers.showNoConnectionSnackBar(context);
+  //     }
+  //   }
+  // }
 
   Future<void> fetchCurrencies(BuildContext context) async {
     final connected = await AppConnectivity.connectivity();

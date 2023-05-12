@@ -12,8 +12,7 @@ import '../../../../../../../repository/repository.dart';
 import '../../../enter_phone/riverpod/notifier/enter_phone_notifier.dart';
 import '../state/register_confirmation_state.dart';
 
-class RegisterConfirmationNotifier
-    extends StateNotifier<RegisterConfirmationState> {
+class RegisterConfirmationNotifier extends StateNotifier<RegisterConfirmationState> {
   final AuthRepository _authRepository;
   final CurrenciesRepository _currenciesRepository;
   final UserRepository _userRepository;
@@ -47,7 +46,7 @@ class RegisterConfirmationNotifier
           fetchCurrencies(context);
           getProfileDetails(context);
           state = state.copyWith(isLoading: false);
-          context.pushRoute(const RegisterRoute());
+          context.pushRoute(const ShopMainRoute());
           _timer?.cancel();
         },
         failure: (failure) {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:g_customer/src/models/response/delete_user_response.dart';
 
 import '../../core/di/injection.dart';
 import '../../core/handlers/handlers.dart';
@@ -152,6 +153,30 @@ class UserRepositoryImpl extends UserRepository {
       return const ApiResult.success(data: null);
     } catch (e) {
       debugPrint('==> update firebase token failure: $e');
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  @override
+  Future<ApiResult<DeleteUserResponse>> deleteUserInfo({required String uuid})async {
+    final data = {
+      'uuid': uuid,
+    };
+    final String token = LocalStorage.instance.getToken();
+
+    debugPrint('===> delete general info data ${jsonEncode(data)}');
+    try {
+      final client = inject<HttpService>().clientDel(requireAuth: true);
+      client.options.headers.addAll({'Authorization': 'Bearer $token'});
+      final response = await client.delete(
+        '/api/v1/dashboard/user/profile/delete',
+        data: data,
+      );
+      return ApiResult.success(
+        data: DeleteUserResponse.fromJson(response.data),
+      );
+    } catch (e) {
+      debugPrint('==> delete profile details failure: $e');
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

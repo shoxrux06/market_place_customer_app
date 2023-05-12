@@ -20,7 +20,7 @@ class AppleFbButton extends StatelessWidget {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor:
-            isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
+           isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
         minimumSize: Size(46.r, 46.r),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.r),

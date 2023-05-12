@@ -22,36 +22,10 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb235362965572634</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<string>TRUE</string>
-	<key>FacebookAppID</key>
-	<string>235362965572634</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<string>TRUE</string>
-	<key>FacebookClientToken</key>
-	<string>8b043b42a8b799c2b7b30dd221aeb789</string>
-	<key>FacebookDisplayName</key>
-	<string>TR Express</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fbapi</string>
-		<string>fb-messenger-share-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

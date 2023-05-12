@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,14 +53,8 @@ class ProductDetailsModal extends ConsumerWidget {
                 ),
               ),
               20.verticalSpace,
-              Text(
-                '${state.product?.translation?.description}',
-                style: GoogleFonts.k2d(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: isDarkMode ? AppColors.white : AppColors.black,
-                  letterSpacing: -0.5,
-                ),
+              Html(
+                data: '${state.product?.translation?.description}',
               ),
               20.verticalSpace,
               (state.product?.properties ?? []).isNotEmpty

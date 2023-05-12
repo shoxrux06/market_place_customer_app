@@ -1,3 +1,5 @@
+import 'package:g_customer/src/models/response/delete_user_response.dart';
+
 import '../core/handlers/handlers.dart';
 import '../models/models.dart';
 
@@ -13,6 +15,10 @@ abstract class UserRepository {
     String? email,
     String? password,
     String? passwordConfirm,
+  });
+
+  Future<ApiResult<DeleteUserResponse>> deleteUserInfo({
+    required String uuid,
   });
 
   Future<ApiResult<ProfileResponse>> updateProfileImage({

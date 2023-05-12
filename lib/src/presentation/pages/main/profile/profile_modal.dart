@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_customer/src/presentation/pages/main/profile/widgets/delete_modal.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart' as intl;
 
@@ -35,7 +36,7 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
     super.initState();
     Future.delayed(
       Duration.zero,
-      () {
+          () {
         ref.read(addressModalProvider.notifier).fetchLocalAddresses();
         ref.read(chatProvider.notifier).fetchChats(context);
       },
@@ -89,7 +90,7 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
             alignment: AlignmentDirectional.centerEnd,
             child: Padding(
               padding: EdgeInsetsDirectional.only(start: 15.r),
-              child:  Row(
+              child: Row(
                 children: [
                   AddressButton(),
                   const Spacer(),
@@ -122,7 +123,8 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                         borderRadius: BorderRadius.circular(16.r),
                         child: CachedNetworkImage(
                           imageUrl:
-                              '${AppConstants.imageBaseUrl}/${LocalStorage.instance.getProfileImage()}',
+                          '${AppConstants.imageBaseUrl}/${LocalStorage.instance
+                              .getProfileImage()}',
                           width: 50.r,
                           height: 50.r,
                           fit: BoxFit.cover,
@@ -165,7 +167,7 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                       16.horizontalSpace,
                       Expanded(
                         child: InkWell(
-                          onTap: (){
+                          onTap: () {
                             context.router.push(const CardRoute());
                           },
                           child: Container(
@@ -193,20 +195,20 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                                     10.horizontalSpace,
                                     Text(
                                       LocalStorage.instance
-                                                  .getWalletData()
-                                                  ?.price !=
-                                              null
+                                          .getWalletData()
+                                          ?.price !=
+                                          null
                                           ? intl.NumberFormat.currency(
-                                              symbol: LocalStorage.instance
-                                                  .getSelectedCurrency()
-                                                  .symbol,
-                                            ).format(
-                                              LocalStorage.instance
-                                                  .getWalletData()
-                                                  ?.price,
-                                            )
+                                        symbol: LocalStorage.instance
+                                            .getSelectedCurrency()
+                                            .symbol,
+                                      ).format(
+                                        LocalStorage.instance
+                                            .getWalletData()
+                                            ?.price,
+                                      )
                                           : AppHelpers.getTranslation(
-                                              TrKeys.noWallet),
+                                          TrKeys.noWallet),
                                       style: GoogleFonts.k2d(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13.sp,
@@ -243,8 +245,9 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                             : AppColors.dontHaveAccBtnBack,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8.r),
-                          onTap: () => context.router
-                              .push(const SystemSettingsRoute()),
+                          onTap: () =>
+                              context.router
+                                  .push(const SystemSettingsRoute()),
                           child: Container(
                             width: 50.r,
                             height: 50.r,
@@ -272,7 +275,9 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                           title: AppHelpers.getTranslation(
                               TrKeys.personalInformation),
                           onTap: () {
-                            if (LocalStorage.instance.getToken().isEmpty) {
+                            if (LocalStorage.instance
+                                .getToken()
+                                .isEmpty) {
                               LocalStorage.instance.deleteToken();
                               AppHelpers.showCheckFlash(
                                 context,
@@ -289,28 +294,32 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                         ProfileMenuButton(
                           iconData: FlutterRemix.bookmark_3_line,
                           title: AppHelpers.getTranslation(TrKeys.savedStores),
-                          onTap: () => context.router
-                              .push(const SavedStoresRoute()),
+                          onTap: () =>
+                              context.router
+                                  .push(const SavedStoresRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.percent_line,
                           title: AppHelpers.getTranslation(TrKeys.discount),
-                          onTap: () => context.router
-                              .push(const DiscountProductsRoute()),
+                          onTap: () =>
+                              context.router
+                                  .push(const DiscountProductsRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.eye_line,
                           title:
-                              AppHelpers.getTranslation(TrKeys.viewedProducts),
-                          onTap: () => context.router
-                              .push(const ViewedProductsRoute()),
+                          AppHelpers.getTranslation(TrKeys.viewedProducts),
+                          onTap: () =>
+                              context.router
+                                  .push(const ViewedProductsRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.bank_card_line,
                           title:
-                              AppHelpers.getTranslation(TrKeys.walletHistory),
-                          onTap: () => context.router
-                              .push(const WalletHistoriesRoute()),
+                          AppHelpers.getTranslation(TrKeys.walletHistory),
+                          onTap: () =>
+                              context.router
+                                  .push(const WalletHistoriesRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.shirt_line,
@@ -321,15 +330,18 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                         ProfileMenuButton(
                           iconData: FlutterRemix.map_pin_2_line,
                           title:
-                              AppHelpers.getTranslation(TrKeys.savedLocations),
-                          onTap: () => context.router
-                              .push(const SavedLocationsRoute()),
+                          AppHelpers.getTranslation(TrKeys.savedLocations),
+                          onTap: () =>
+                              context.router
+                                  .push(const SavedLocationsRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.file_list_2_line,
                           title: AppHelpers.getTranslation(TrKeys.orderHistory),
                           onTap: () {
-                            if (LocalStorage.instance.getToken().isEmpty) {
+                            if (LocalStorage.instance
+                                .getToken()
+                                .isEmpty) {
                               LocalStorage.instance.deleteToken();
                               AppHelpers.showCheckFlash(
                                 context,
@@ -349,66 +361,72 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                           onTap: () => chatNotifier.checkAuthorised(context),
                           widget: chatState.isLoading
                               ? JumpingDots(
-                                  color: isDarkMode
-                                      ? AppColors.white
-                                      : AppColors.black,
-                                  radius: 5,
-                                )
+                            color: isDarkMode
+                                ? AppColors.white
+                                : AppColors.black,
+                            radius: 5,
+                          )
                               : StreamBuilder<QuerySnapshot>(
-                                  stream: _fireStore
-                                      .collection('messages')
-                                      .where('chat_id',
-                                          isEqualTo: chatState.chatId)
-                                      .where('unread', isEqualTo: true)
-                                      .where('sender', isEqualTo: 0)
-                                      .snapshots(),
-                                  builder: (context, snapshot) {
-                                    debugPrint(
-                                        '===> profile modal has data: ${snapshot.hasData}');
-                                    if (!snapshot.hasData) {
-                                      return const SizedBox();
-                                    }
-                                    final List<DocumentSnapshot> docs =
-                                        snapshot.data!.docs;
-                                    if (docs.isEmpty) {
-                                      return Container();
-                                    }
-                                    return Container(
-                                      margin: REdgeInsets.only(right: 10),
-                                      height: 24.r,
-                                      width: 24.r,
-                                      decoration: BoxDecoration(
-                                        color: AppColors.red,
-                                        borderRadius:
-                                            BorderRadius.circular(12.r),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        docs.length.toString(),
-                                        style: GoogleFonts.k2d(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 12.sp,
-                                          letterSpacing: -0.5,
-                                          color: AppColors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
+                            stream: _fireStore
+                                .collection('messages')
+                                .where('chat_id',
+                                isEqualTo: chatState.chatId)
+                                .where('unread', isEqualTo: true)
+                                .where('sender', isEqualTo: 0)
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              debugPrint(
+                                  '===> profile modal has data: ${snapshot
+                                      .hasData}');
+                              if (!snapshot.hasData) {
+                                return const SizedBox();
+                              }
+                              final List<DocumentSnapshot> docs =
+                                  snapshot.data!.docs;
+                              if (docs.isEmpty) {
+                                return Container();
+                              }
+                              return Container(
+                                margin: REdgeInsets.only(right: 10),
+                                height: 24.r,
+                                width: 24.r,
+                                decoration: BoxDecoration(
+                                  color: AppColors.red,
+                                  borderRadius:
+                                  BorderRadius.circular(12.r),
                                 ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  docs.length.toString(),
+                                  style: GoogleFonts.k2d(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.sp,
+                                    letterSpacing: -0.5,
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.store_2_line,
                           title: AppHelpers.getTranslation(TrKeys.becomeSeller),
-                          onTap: () => context.router
-                              .push(const BecomeSellerRoute()),
+                          onTap: () =>
+                              context.router
+                                  .push(const BecomeSellerRoute()),
                         ),
                         ProfileMenuButton(
                           iconData: FlutterRemix.logout_circle_r_line,
-                          title: LocalStorage.instance.getToken().isEmpty
+                          title: LocalStorage.instance
+                              .getToken()
+                              .isEmpty
                               ? AppHelpers.getTranslation(TrKeys.login)
                               : AppHelpers.getTranslation(TrKeys.logout),
                           onTap: () {
-                            if (LocalStorage.instance.getToken().isEmpty) {
+                            if (LocalStorage.instance
+                                .getToken()
+                                .isEmpty) {
                               LocalStorage.instance.logout();
                               context.replaceRoute(const LoginRoute());
                             } else {
@@ -420,6 +438,23 @@ class _ProfileModalState extends ConsumerState<ProfileModal> {
                             }
                           },
                         ),
+                        LocalStorage.instance.getToken().isNotEmpty ?
+                        ProfileMenuButton(
+                          iconData: FlutterRemix.delete_bin_2_line,
+                          title: AppHelpers.getTranslation(TrKeys.deleteAccount),
+                          onTap: () {
+                            if (LocalStorage.instance.getToken().isEmpty) {
+                              LocalStorage.instance.logout();
+                              context.replaceRoute(const LoginRoute());
+                            } else {
+                              AppHelpers.showCustomModalBottomSheet(
+                                context: context,
+                                modal: const DeleteModal(),
+                                isDarkMode: isDarkMode,
+                              );
+                            }
+                          },
+                        ):Container(),
                       ],
                     ),
                   ),

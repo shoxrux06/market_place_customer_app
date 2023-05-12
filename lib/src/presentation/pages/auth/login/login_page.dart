@@ -81,7 +81,7 @@ class LoginPage extends ConsumerWidget {
                         ),
                         26.verticalSpace,
                         OutlinedBorderTextField(
-                          label: AppHelpers.getTranslation(TrKeys.email),
+                          label: AppHelpers.getTranslation(TrKeys.phone),
                           onChanged: notifier.setEmail,
                           inputType: TextInputType.emailAddress,
                           textCapitalization: TextCapitalization.none,
@@ -140,7 +140,7 @@ class LoginPage extends ConsumerWidget {
                         AccentLoginButton(
                           title: AppHelpers.getTranslation(TrKeys.login),
                           isLoading: state.isLoading,
-                          onPressed: state.email.length > 2 && state.password.length > 7
+                          onPressed: state.password.length > 7
                               ? () => notifier.login(context)
                               : null,
                         ),
@@ -158,27 +158,27 @@ class LoginPage extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: GoogleSignButton(
-                          isLoading: state.isGoogleLoading,
-                          onPressed: () => notifier.loginWithGoogle(context),
-                        ),
-                      ),
-                      9.horizontalSpace,
-                      Row(
-                        children: [
-                          AppleFbButton(
-                            iconData: FlutterRemix.facebook_fill,
-                            onPressed: () =>
-                                notifier.loginWithFacebook(context),
-                          ),
-                          // 9.horizontalSpace,
-                          // AppleFbButton(
-                          //   iconData: FlutterRemix.apple_fill,
-                          //   onPressed: () {},
-                          // ),
-                        ],
-                      ),
+                      // Expanded(
+                      //   child: GoogleSignButton(
+                      //     isLoading: state.isGoogleLoading,
+                      //     onPressed: () => notifier.loginWithGoogle(context),
+                      //   ),
+                      // ),
+                      // 9.horizontalSpace,
+                      // Row(
+                      //   children: [
+                      //     AppleFbButton(
+                      //       iconData: FlutterRemix.facebook_fill,
+                      //       onPressed: () =>
+                      //           notifier.loginWithFacebook(context),
+                      //     ),
+                      //     // 9.horizontalSpace,
+                      //     // AppleFbButton(
+                      //     //   iconData: FlutterRemix.apple_fill,
+                      //     //   onPressed: () {},
+                      //     // ),
+                      //   ],
+                      // ),
                     ],
                   ),
                   28.verticalSpace,

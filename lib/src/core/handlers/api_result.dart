@@ -8,6 +8,5 @@ part 'api_result.freezed.dart';
 class ApiResult<T> with _$ApiResult<T> {
   const factory ApiResult.success({required T data}) = Success<T>;
 
-  const factory ApiResult.failure({required NetworkExceptions error}) =
-  Failure<T>;
+  const factory ApiResult.failure({required NetworkExceptions error}) = Failure<T>;
 }

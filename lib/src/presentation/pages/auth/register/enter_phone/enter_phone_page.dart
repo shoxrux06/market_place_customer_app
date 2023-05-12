@@ -151,31 +151,7 @@ class _EnterPhonePageState extends ConsumerState<EnterPhonePage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: GoogleSignButton(
-                          isLoading: state.isGoogleLoading,
-                          onPressed: () => notifier.registerWithGoogle(context),
-                        ),
-                      ),
-                      9.horizontalSpace,
-                      Row(
-                        children: [
-                          AppleFbButton(
-                            iconData: FlutterRemix.facebook_fill,
-                            onPressed: () {},
-                          ),
-                          // 9.horizontalSpace,
-                          // AppleFbButton(
-                          //   iconData: FlutterRemix.apple_fill,
-                          //   onPressed: () {},
-                          // ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  Container(),
                   28.verticalSpace,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

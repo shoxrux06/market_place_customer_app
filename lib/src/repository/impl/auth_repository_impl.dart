@@ -11,7 +11,7 @@ class AuthRepositoryImpl extends AuthRepository {
     required String email,
     required String password,
   }) async {
-    final data = {'email': email, 'password': password};
+    final data = {'phone': email, 'password': password};
     try {
       final client = inject<HttpService>().client(requireAuth: false);
       final response = await client.post(

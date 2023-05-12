@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
@@ -9,13 +10,18 @@ import '../../../../../core/routes/app_router.gr.dart';
 import '../../../../../core/utils/utils.dart';
 import '../../../../components/components.dart';
 import '../../../../theme/theme.dart';
+import '../../../auth/register/riverpod/provider/register_provider.dart';
 
-class LogoutModal extends StatelessWidget {
-  const LogoutModal({Key? key}) : super(key: key);
+class DeleteModal extends ConsumerWidget {
+  const DeleteModal({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notifier2 = ref.read(registerProvider.notifier);
+    final state2 = ref.read(registerProvider);
+
     final bool isDarkMode = LocalStorage.instance.getAppThemeMode();
+
     final bool isLtr = LocalStorage.instance.getLangLtr();
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
@@ -37,7 +43,7 @@ class LogoutModal extends StatelessWidget {
             ),
             40.verticalSpace,
             Text(
-              '${AppHelpers.getTranslation(TrKeys.doYouReallyWantToLogout)}?',
+              '${AppHelpers.getTranslation(TrKeys.doYouReallyWantToDeleteTheAccount)}?',
               style: GoogleFonts.k2d(
                 fontSize: 18.sp,
                 color: isDarkMode ? AppColors.white : AppColors.black,
@@ -60,12 +66,7 @@ class LogoutModal extends StatelessWidget {
                     background: AppColors.red,
                     title: AppHelpers.getTranslation(TrKeys.yes),
                     onPressed: () {
-                      // if (LocalStorage.instance.getAuthenticatedWithSocial()) {
-                      //   final GoogleSignIn signIn = GoogleSignIn();
-                      //   signIn.disconnect();
-                      //   signIn.signOut();
-                      // }
-                      LocalStorage.instance.logout();
+                      notifier2.deleteUserInfo(context, LocalStorage.instance.getUser()?.user?.uuid ?? '').then((value) => LocalStorage.instance.logout());
                       context.replaceRoute(const LoginRoute());
                     },
                   ),

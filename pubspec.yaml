@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+2
+version: 1.0.2+7
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -28,10 +28,10 @@ dependencies:
   url_launcher: ^6.1.5
   flutter_svg: ^1.1.1+1
   flutter_remix: ^0.0.3
-  firebase_auth: ^3.5.0
+#  firebase_auth: ^3.5.0
   firebase_core: ^1.20.0
   flutter_stripe: ^5.0.0
-  google_sign_in: ^5.4.1
+#  google_sign_in: ^5.4.1
   cloud_firestore: ^3.4.6
   carousel_slider: ^4.1.1
   flutter_riverpod: ^1.0.4
@@ -52,7 +52,7 @@ dependencies:
   flutter_html: ^3.0.0-alpha.6
   flutter_screenutil: ^5.5.3+2
   cached_network_image: ^3.2.1
-  flutter_facebook_auth: ^4.4.1+1
+#  flutter_facebook_auth: ^4.4.1+1
   flutter_local_notifications: ^9.9.1
   expansion_tile_card: ^2.0.0
 

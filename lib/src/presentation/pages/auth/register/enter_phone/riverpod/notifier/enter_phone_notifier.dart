@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../../../../core/constants/constants.dart';
 import '../../../../../../../core/handlers/handlers.dart';
@@ -72,53 +72,53 @@ class EnterPhoneNotifier extends StateNotifier<EnterPhoneState> {
     }
   }
 
-  Future<void> registerWithGoogle(BuildContext context) async {
-    final connected = await AppConnectivity.connectivity();
-    if (connected) {
-      state = state.copyWith(isGoogleLoading: true);
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) {
-        state = state.copyWith(isGoogleLoading: false);
-        return;
-      }
-
-      final response = await _authRepository.loginWithGoogle(
-        email: googleUser.email,
-        displayName: googleUser.displayName ?? '',
-        id: googleUser.id,
-      );
-      response.when(
-        success: (data) async {
-          LocalStorage.instance.setUser(data.data);
-          LocalStorage.instance.setToken(data.data?.accessToken ?? '');
-          LocalStorage.instance.setFirstName(data.data?.user?.firstname);
-          LocalStorage.instance.setLastName(data.data?.user?.lastname);
-          LocalStorage.instance.setProfileImage(data.data?.user?.img);
-          fetchCurrencies(context);
-          final addressResponse = await _addressRepository.getUserAddresses();
-          addressResponse.when(
-            success: (addressData) async {
-              state = state.copyWith(isGoogleLoading: false);
-              if (saveAddressesToLocal(addressData.data)) {
-                context.replaceRoute(const ShopMainRoute());
-              } else {
-                context.replaceRoute(AddAddressRoute(isRequired: true));
-              }
-            },
-            failure: (addressFailure) {
-              state = state.copyWith(isLoading: false);
-              debugPrint('==> address failure: $addressFailure');
-            },
-          );
-        },
-        failure: (failure) {},
-      );
-    } else {
-      if (mounted) {
-        AppHelpers.showNoConnectionSnackBar(context);
-      }
-    }
-  }
+  // Future<void> registerWithGoogle(BuildContext context) async {
+  //   final connected = await AppConnectivity.connectivity();
+  //   if (connected) {
+  //     state = state.copyWith(isGoogleLoading: true);
+  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //     if (googleUser == null) {
+  //       state = state.copyWith(isGoogleLoading: false);
+  //       return;
+  //     }
+  //
+  //     final response = await _authRepository.loginWithGoogle(
+  //       email: googleUser.email,
+  //       displayName: googleUser.displayName ?? '',
+  //       id: googleUser.id,
+  //     );
+  //     response.when(
+  //       success: (data) async {
+  //         LocalStorage.instance.setUser(data.data);
+  //         LocalStorage.instance.setToken(data.data?.accessToken ?? '');
+  //         LocalStorage.instance.setFirstName(data.data?.user?.firstname);
+  //         LocalStorage.instance.setLastName(data.data?.user?.lastname);
+  //         LocalStorage.instance.setProfileImage(data.data?.user?.img);
+  //         fetchCurrencies(context);
+  //         final addressResponse = await _addressRepository.getUserAddresses();
+  //         addressResponse.when(
+  //           success: (addressData) async {
+  //             state = state.copyWith(isGoogleLoading: false);
+  //             if (saveAddressesToLocal(addressData.data)) {
+  //               context.replaceRoute(const ShopMainRoute());
+  //             } else {
+  //               context.replaceRoute(AddAddressRoute(isRequired: true));
+  //             }
+  //           },
+  //           failure: (addressFailure) {
+  //             state = state.copyWith(isLoading: false);
+  //             debugPrint('==> address failure: $addressFailure');
+  //           },
+  //         );
+  //       },
+  //       failure: (failure) {},
+  //     );
+  //   } else {
+  //     if (mounted) {
+  //       AppHelpers.showNoConnectionSnackBar(context);
+  //     }
+  //   }
+  // }
 
   bool saveAddressesToLocal(List<AddressData>? data) {
     if (data == null || data.isEmpty) {
